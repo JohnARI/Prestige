@@ -1,0 +1,71 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
+  .banner-image {
+    background-image: url('assets/img/banner-img.jpg');
+    background-size: cover;
+  }
+
+  .navbar-brand {
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    color: black;
+  }
+</style>
+</head>
+
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+    <div class="container">
+      <a class="navbar-brand" href="#">Prestige</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="mx-auto"></div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
+    <div class="content text-center">
+      <h1 class="text-white">PRESTIGE</h1>
+    </div>
+  </div>
+
+
+  
+  <script>
+    let nav = document.querySelector('nav');
+    let logo = document.querySelector('.navbar-brand');
+
+    window.addEventListener('scroll', function () {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('bg-dark', 'shadow');
+        logo.style.color = 'white';
+      } else {
+        nav.classList.remove('bg-dark', 'shadow');
+        logo.style.color = 'black';
+      }
+    });
+  </script>
