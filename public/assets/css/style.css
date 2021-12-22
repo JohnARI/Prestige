@@ -12,6 +12,10 @@ nav {
   transition: 0.7s ease;
 }
 
+.navbar {
+  border-bottom: 1px rgba(255, 255,255,0.3) solid;
+}
+
 .nav-link:after {
 
   bottom: 0;
