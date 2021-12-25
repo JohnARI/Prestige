@@ -1,9 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
-
-
 .nav-link {
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   position: relative;
 }

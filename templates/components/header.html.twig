@@ -17,7 +17,7 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <a class="navbar-brand" href="#"><img src="assets/images/prestige_blanc.png" alt=""></a>
+          <a class="navbar-brand" href="{{path('home')}}"><img class="navLogo" src="assets/images/prestige_blanc.png" alt="Logo"></a>
 
         </ul>
         <ul class="navbar-nav">
@@ -41,20 +41,21 @@
   <script>
 
 
-    let video = document.querySelector('video');
     let nav = document.querySelector('nav');
 
     window.addEventListener('scroll', function () {
       if (window.pageYOffset > 100) {
-        nav.classList.add('bg-dark', 'shadow');
-
+        nav.classList.add('bg-black', 'shadow');
 
       } else {
-        nav.classList.remove('bg-dark', 'shadow');
+        nav.classList.remove('bg-black', 'shadow');
 
 
       }
     });
 
-  window.addEventListener('onMouseOver')
+    
+
+
+
   </script>
