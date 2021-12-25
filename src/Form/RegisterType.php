@@ -18,18 +18,22 @@ class RegisterType extends AbstractType
         $builder
         ->add('firstname', TextType::class, [
             'label' => 'Prénom',
+            'required' => true,
             'attr' => ['placeholder' => 'Entrez votre prénom']
         ])
         ->add('lastname', TextType::class, [
             'label' => 'Nom de famille',
+            'required' => true,
             'attr' => ['placeholder' => 'Entrez votre nom']
         ])
         ->add('email', EmailType::class, [
             'label' => 'Email',
+            'required' => true,
             'attr' => ['placeholder' => 'Entrez votre email']
         ])
         ->add('password', PasswordType::class, [
             'label' => 'Mot de passe',
+            'required' => true,
             'attr' => ['placeholder' => 'Entrez votre mot de passe']
 
         ])
@@ -38,7 +42,7 @@ class RegisterType extends AbstractType
 
         ->add('submit', SubmitType::class, [
             'label' => 'Inscription',
-            'attr' => ['class' => 'btn mb-2 mb-md-0 btn-outline-dark btn-block']
+            'attr' => ['class' => 'btn btn-outline-secondary btn-block']
         ]);
     }
 

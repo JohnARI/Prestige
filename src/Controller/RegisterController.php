@@ -38,6 +38,8 @@ class RegisterController extends AbstractController
             $user->setPassword($this->passwordHasher->hashPassword($user,$user->getPassword()));
             $this->entityManager->persist($user);
             $this->entityManager->flush();
+            
+            return $this->redirectToRoute('app_login');
         }
         return $this->render('register/register.html.twig', [
             'form' => $form->createView(),
