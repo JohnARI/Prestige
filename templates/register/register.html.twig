@@ -4,15 +4,12 @@
 <head>
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 {% block body %}
 <div class="container">
 {{form(form)}}
 </div>
 {% endblock %}
 =======
-=======
->>>>>>> Stashed changes
     <meta charset="UTF-8">
     <title>{% block title %}Inscription{% endblock %}</title>
 
@@ -23,7 +20,6 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     {% endblock %}
     {% block javascripts %}
-    <script src="https://kit.fontawesome.com/5860ccadae.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
@@ -37,11 +33,8 @@
 <body>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
-
         body {
-            background-color: white;
-            font-family: 'Cinzel', serif;
+            background-color: black;
         }
 
         .height-100 {
@@ -57,80 +50,33 @@
 
 
         .registerTop {
-            font-size: 30px;
-            
+            font-size: 30px
         }
     </style>
     <div class="container">
         <div class="d-flex justify-content-center pt-3">
-            <a href="{{path('home')}}"><img src="assets/images/prestige_noir.png" alt="Logo"></a>
+            <a href="{{path('home')}}"><img src="assets/images/prestige_blanc.png" alt="Logo"></a>
         </div>
         <div class="row mt-3 g-0 mb-5 height-100">
             <div class="col-md-6">
-                <div class="h-100 shadow">
-                    <img style="height: 100%" src="assets/images/watch_register.jpg"></img>
+                <div class="bg-dark h-100 sidebar">
+                    <img style="height: 100%" src="assets/images/a.jpg"></img>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="bg-white p-4 h-100 shadow">
+                <div class="bg-white p-4 h-100">
                     <div class="p-3 d-flex justify-content-center flex-column"> <span
-                            class="registerTop text-center mb-3">Inscription</span>
+                            class="registerTop">Inscription</span>
 
-                        <form>
+                        {{form(form)}}
+                        <div class="d-flex justify-content-between w-100 align-items-center">
 
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-user-friends fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form(form.lastname)}}
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form(form.firstname)}}
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form(form.email)}}
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-phone-alt fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form(form.phone)}}
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form(form.password)}}
-                                </div>
-                            </div>
-
-
-                            <div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
-                                {{form_end(form)}}
-                                <p class="text-muted ms-2 me-2">ou</p>
-                                <a href="{{path('app_login')}}">Se connecter</a>
-                            </div>
-
-
-
-
-                        </form>
-
+                        </div>
                     </div>
-                   
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
+>>>>>>> Stashed changes
