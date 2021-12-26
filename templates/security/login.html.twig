@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <title>{% block title %}Inscription{% endblock %}</title>
+    <title>{% block title %}Connexion{% endblock %}</title>
 
     {% block stylesheets %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -36,8 +36,11 @@
     <body>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+
         body {
-            background-color: black;
+            background-color: white;
+            font-family: 'Cinzel', serif;
         }
 
         .height-100 {
@@ -53,28 +56,39 @@
 
 
         .registerTop {
-            font-size: 30px
+            font-size: 30px;
+            
         }
     </style>
+
     <div class="container">
         <div class="d-flex justify-content-center pt-3">
-            <a href="{{path('home')}}"><img src="assets/images/prestige_blanc.png" alt="Logo"></a>
+            <a href="{{path('home')}}"><img src="assets/images/prestige_noir.png" alt="Logo"></a>
         </div>
         <div class="row mt-3 g-0 mb-5 height-100">
             <div class="col-md-6">
-                <div class="bg-dark h-100 sidebar">
-                    <img style="height: 100%" src="assets/images/a.jpg"></img>
+                <div class="h-100 shadow">
+                    <img style="height: 100%" src="assets/images/watch_login.jpg"></img>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="bg-white p-4 h-100">
+                <div class="bg-white p-4 h-100 shadow">
                     <div class="p-3 d-flex justify-content-center flex-column"> <span
-                            class="registerTop">Connexion</span>
-
-                        <label for="inputEmail" class="mt-2">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-2" autocomplete="email" required autofocus>
-                        <label for="inputPassword" class="mt-2">Mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control mt-2" autocomplete="current-password" required>
+                            class="registerTop text-center">Connexion</span>
+<div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user-friends fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mt-2" autocomplete="email" required autofocus>
+                                </div>
+                            </div>
+                        
+                        <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user-friends fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <input type="password" name="password" id="inputPassword" class="form-control mt-2" autocomplete="current-password" required>
+                                </div>
+                            </div>
+                        
 
                         <input type="hidden" name="_csrf_token"
                         value="{{ csrf_token('authenticate') }}">
@@ -89,14 +103,14 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-outline-secondary col-3 mt-4" type="submit">
-        Se connecter
-    </button>
+<div class="d-flex align-items-baseline justify-content-center mx-4 mb mb-lg-4">
+    <button class="btn btn-outline-dark btn-block" type="submit">Se connecter</button>
+                                <p class="text-muted ms-2 me-2">ou</p>
+                                <a href="{{path('register')}}">S'inscrire</a>
+                            </div>
+    
 </form>
-                        <div class="d-flex justify-content-between w-100 align-items-center">
-
-                        </div>
+                        
                     </div>
                 </div>
             </div>
