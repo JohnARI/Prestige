@@ -27,10 +27,11 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+        @import url('http://fonts.cdnfonts.com/css/gotham');
 
         body {
             background-color: white;
-            font-family: 'Cinzel', serif;
+            font-family: 'Gotham', sans-serif;
         }
 
         .height-100 {
@@ -65,40 +66,40 @@
                     <div class="p-3 d-flex justify-content-center flex-column"> <span
                             class="registerTop text-center mb-3">Inscription</span>
 
-                        <form>
+                        {{form_start(form)}}
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-user-friends fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form(form.lastname)}}
+                                    {{form_widget(form.lastname)}}
                                 </div>
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form(form.firstname)}}
+                                    {{form_widget(form.firstname)}}
                                 </div>
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form(form.email)}}
+                                    {{form_widget(form.email)}}
                                 </div>
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-phone-alt fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form(form.phone)}}
+                                    {{form_widget(form.phone)}}
                                 </div>
                             </div>
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form(form.password)}}
+                                    {{form_widget(form.password)}}
                                 </div>
                             </div>
 
@@ -112,7 +113,7 @@
 
 
 
-                        </form>
+                        {{form_end(form)}}
 
                     </div>
                    

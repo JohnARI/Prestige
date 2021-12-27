@@ -20,7 +20,7 @@ class RegisterType extends AbstractType
 
         ->add('firstname', TextType::class, [
             'required' => true,
-            'attr' => ['placeholder' => 'Entrez votre prénom']
+            'attr' => ['placeholder' => 'Entrez votre prénom',]
         ])
 
         ->add('lastname', TextType::class, [
@@ -31,22 +31,24 @@ class RegisterType extends AbstractType
 
         ->add('email', EmailType::class, [
             'required' => true,
-            'attr' => ['placeholder' => 'Entrez votre email']
+            'attr' => ['placeholder' => 'Entrez votre email',]
         ])
 
         ->add('phone', TelType::class, [
-            'attr' => ['placeholder' => 'Entrez votre numéro de téléphone']
+            'attr' => ['placeholder' => 'Entrez votre numéro de téléphone',],
+            'required' => false,
         ])
 
         ->add('password', PasswordType::class, [
             'required' => true,
-            'attr' => ['placeholder' => 'Entrez votre mot de passe']
+            'attr' => ['placeholder' => 'Entrez votre mot de passe',]
 
         ])
 
         ->add('submit', SubmitType::class, [
             'label' => "S'inscrire",
-            'attr' => ['class' => 'btn btn-outline-dark btn-block']
+            'attr' => ['class' => 'btn btn-outline-dark btn-block',
+            'type' => 'submit',]
         ]);
     }
 
