@@ -35,7 +35,7 @@ class Category
     private $mixed;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="Category")
      */
     private $products;
 

@@ -19,12 +19,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
-     /**
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
-         /**
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $lastname;
@@ -126,6 +126,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getRole(): ?string
+    {
+        $userRoles = $this->getRoles();
+        $access = implode(',', $userRoles);
+        $admin = '[Admin]';
+        $user = '[User]';
+
+        switch ($access) {
+            case 'ROLE_ADMIN,ROLE_USER':
+                return $admin;
+                break;
+            case 'ROLE_USER':
+                return $user;
+                break;
+        }
+
+        return '';
     }
 
     /**
