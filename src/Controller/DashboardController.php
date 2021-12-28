@@ -6,6 +6,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Form\ProductType;
+use App\Form\CategoryType;
 use App\Form\EditUserType;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -18,25 +20,61 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class DashboardController extends AbstractController
 {
 
-    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher) {
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
+    {
         $this->entityManager = $entityManager;
         $this->passwordHasher = $passwordHasher;
     }
+
     /**
      * @Route("/admin/dashboard", name="dashboard")
      */
     public function dashboard(): Response
     {
-        $users = $this->entityManager->getRepository(User::class)->findAll();
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
-        $categories = $this->entityManager->getRepository(Category::class)->findAll();
 
-        return $this->render('dashboard/dashboard.html.twig', [
-            'products' => $products,
-            'categories' => $categories,
+        return $this->render('dashboard/dashboard.html.twig', []);
+    }
+
+    /**
+     * @Route("/admin/dashboard/user", name="showUser")
+     */
+    public function showUser(): Response
+    {
+        $users = $this->entityManager->getRepository(User::class)->findAll();
+
+        return $this->render('dashboard/user.html.twig', [
+
             'users' => $users,
         ]);
     }
+
+    /**
+     * @Route("/admin/dashboard/product", name="showProduct")
+     */
+    public function showProduct(): Response
+    {
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+
+        return $this->render('dashboard/product.html.twig', [
+
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * @Route("/admin/dashboard/category", name="showCategory")
+     */
+    public function showCatagory(): Response
+    {
+        $categories = $this->entityManager->getRepository(Category::class)->findAll();
+
+        return $this->render('dashboard/category.html.twig', [
+
+            'categories' => $categories,
+        ]);
+    }
+
+
 
     /**
      * @Route("/admin/add/user", name="add_user")
@@ -61,7 +99,7 @@ class DashboardController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    
+
     /**
      * @Route("/admin/edit/user/{id}", name="edit_user")
      */
@@ -72,19 +110,19 @@ class DashboardController extends AbstractController
 
         $form = $this->createForm(EditUserType::class, $users);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $users->setPassword($this->passwordHasher->hashPassword($users, $users->getPassword()));
             $this->entityManager->persist($users);
             $this->entityManager->flush();
             return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
         }
-              
+
         return $this->render('dashboard/edit_user.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-    
+
     /**
      * @Route("/admin/delete/user/{id}", name="delete_user")
      */
@@ -227,10 +265,4 @@ class DashboardController extends AbstractController
 
         return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
     }
-    
-
-
-
-
-
 }

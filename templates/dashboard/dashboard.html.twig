@@ -5,8 +5,8 @@
 {% block body %}
 
 <style>
-    h2 {
-        padding-top: 100px;
+    .btn {
+        margin-top: 100px;
     }
 
     body {
@@ -14,108 +14,11 @@
     }
 </style>
 <div class="container">
-    <h2 class="text-center">Mes membres</h2>
-    <a href="{{path('add_user')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un membre</a>
-    <table class="table table-hover mt-2">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Email</th>
-                <th scope="col">Rôle</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for user in users %}
-            <tr>
-                <th>{{user.id}}</th>
-                <td>{{user.firstname}}</td>
-                <td>{{user.lastname}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.role}}</td>
-                <td>
-                    <a href="{{path('edit_user',{'id': user.id})}}"><i style="color: black;"
-                            class="bi bi-pencil-square"></i></a> |
-                    <a href="{{path('delete_user',{'id': user.id})}}"><i style="color: black;"
-                            class="bi bi-trash"></i></a>
-                </td>
+    <a class="btn btn-primary" href="{{path('showUser')}}">Utilisateurs</a>
+    <a class="btn btn-primary" href="{{path('showProduct')}}">Produits</a>
+    <a class="btn btn-primary" href="{{path('showCategory')}}">Catégories</a>
 
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h2 class="text-center">Mes produits</h2>
-    <a href="{{path('add_product')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un produit</a>
-    <table class="table table-hover mt-2">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nom du produit</th>
-                <th scope="col">Couleur du cadran</th>
-                <th scope="col">Mouvement</th>
-                <th scope="col">Matière</th>
-                <th scope="col">Longueur</th>
-                <th scope="col">Type du bracelet</th>
-                <th scope="col">Couleur du bracelet</th>
-                <th scope="col">Catégorie</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Photo</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-            <tr>
-                <th>{{product.id}}</th>
-                <td>{{product.name}}</td>
-                <td>{{product.dialColor}}</td>
-                <td>{{product.movement}}</td>
-                <td>{{product.matter}}</td>
-                <td>{{product.length}}</td>
-                <td>{{product.braceletType}}</td>
-                <td>{{product.strapColor}}</td>
-                <td>{{product.category}}</td>
-                <td>{{product.price}}€</td>
-                <td> <img style="width:150px; height: 150px;" src="{{product.picture}}" alt="Photo"> </td>
-                <td>
-                     <a href="{{path('edit_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
-                     <a href="{{path('delete_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
-                </td>
-
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <h2 class="text-center">Mes catégories</h2>
-    <a href="{{path('add_category')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter une catégorie</a>
-    <table class="table table-hover mt-2">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Catégorie</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for category in categories %}
-            <tr>
-                <th>{{category.id}}</th>
-                <td>{{category.name}}</td>
-                
-                <td>
-                     <a href="{{path('edit_category',{'id': category.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
-                     <a href="{{path('delete_category',{'id': category.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
-                </td>
-
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    </div>
+</div>
 
 
-    {% endblock %}
+{% endblock %}

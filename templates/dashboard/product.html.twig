@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!{% endblock %}
+
+{% block body %}
+
+<style>
+    h2 {
+        padding-top: 100px;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<div class="container">
+
+    <h2 class="text-center">Mes produits</h2>
+    <a href="{{path('dashboard')}}">Retour</a>
+    <a href="{{path('add_product')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un produit</a>
+    <table class="table table-hover mt-2">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom du produit</th>
+                <th scope="col">Couleur du cadran</th>
+                <th scope="col">Mouvement</th>
+                <th scope="col">Matière</th>
+                <th scope="col">Longueur</th>
+                <th scope="col">Type du bracelet</th>
+                <th scope="col">Couleur du bracelet</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <th>{{product.id}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.dialColor}}</td>
+                <td>{{product.movement}}</td>
+                <td>{{product.matter}}</td>
+                <td>{{product.length}}</td>
+                <td>{{product.braceletType}}</td>
+                <td>{{product.strapColor}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.price}}€</td>
+                <td> <img style="width:150px; height: 150px;" src="{{product.picture}}" alt="Photo"> </td>
+                <td>
+                     <a href="{{path('edit_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
+                     <a href="{{path('delete_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+
+    {% endblock %}
