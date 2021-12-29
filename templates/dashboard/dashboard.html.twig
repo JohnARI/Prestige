@@ -5,20 +5,23 @@
 {% block body %}
 
 <style>
-    .btn {
-        margin-top: 100px;
+    h2 {
+        padding-top: 100px;
     }
 
     body {
-        background-color: darkgray;
+        background-color: grey;
     }
 </style>
-<div class="container">
-    <a class="btn btn-primary" href="{{path('showUser')}}">Utilisateurs</a>
-    <a class="btn btn-primary" href="{{path('showProduct')}}">Produits</a>
-    <a class="btn btn-primary" href="{{path('showCategory')}}">Catégories</a>
 
-</div>
+<h2 style="padding-top: 200px;" class="text-center">Administrateur</h2>
+    <div class="text-center">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <a href="{{path('showUser')}}" class="btn btn-outline-dark btn-lg">Gestion des membres</a>
+        <a href="{{path('showProduct')}}" class="btn btn-outline-dark btn-lg">Gestion des produits</a>
+        <a href="{{path('showCategory')}}" class="btn btn-outline-dark btn-lg">Gestion des catégories</a> 
+
+    </div>
 
 
 {% endblock %}
