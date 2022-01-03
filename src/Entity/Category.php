@@ -22,13 +22,7 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $men;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $woman;
-
+    private $sexe;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
@@ -45,30 +39,19 @@ class Category
         return $this->id;
     }
 
-    public function getMen(): ?string
+    public function getSexe(): ?string
     {
-        return $this->men;
+        return $this->sexe;
     }
 
-    public function setMen(string $men): self
+    public function setSexe(string $sexe): self
     {
-        $this->men = $men;
+        $this->sexe = $sexe;
 
         return $this;
     }
 
-    public function getWoman(): ?string
-    {
-        return $this->woman;
-    }
-
-    public function setWoman(string $woman): self
-    {
-        $this->woman = $woman;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Product[]
      */

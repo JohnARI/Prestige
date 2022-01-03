@@ -121,7 +121,7 @@ class SecurityController extends AbstractController
                 ->subject('Demande de réinitialisation de mot de passe')
                 ->text('Sending emails is fun again!')
                 ->htmlTemplate('security/template_email.html.twig');
-            $cid = $email->embedFromPath('uploads/logo.jfif', 'logo');
+            $cid = $email->embedFromPath('uploads/logo_blanc.png', 'logo');
 
             // pass variables (name => value) to the template
             $email->context([
