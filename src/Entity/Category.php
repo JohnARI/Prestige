@@ -19,16 +19,15 @@ class Category
      */
     private $id;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="Category")
-     */
-    private $products;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $sexe;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     */
+    private $products;
 
     public function __construct()
     {
@@ -40,8 +39,19 @@ class Category
         return $this->id;
     }
 
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
 
+    public function setSexe(string $sexe): self
+    {
+        $this->sexe = $sexe;
 
+        return $this;
+    }
+
+    
     /**
      * @return Collection|Product[]
      */
@@ -68,18 +78,6 @@ class Category
                 $product->setCategory(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
 
         return $this;
     }

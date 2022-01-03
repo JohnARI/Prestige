@@ -1,22 +1,19 @@
-{% extends 'base.html.twig' %}
+{% include 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+<title>{% block title %}Dashboard{% endblock %}</title>
 
 {% block body %}
 
 <style>
-    h2 {
-        padding-top: 100px;
-    }
 
     body {
         background-color: grey;
     }
 </style>
 
-<h2 style="padding-top: 200px;" class="text-center">Administrateur</h2>
+<h2 class="text-center">Administrateur</h2>
     <div class="text-center">
-    <div class="position-absolute top-50 start-50 translate-middle">
+    <div>
         <a href="{{path('showUser')}}" class="btn btn-outline-dark btn-lg">Gestion des membres</a>
         <a href="{{path('showProduct')}}" class="btn btn-outline-dark btn-lg">Gestion des produits</a>
         <a href="{{path('showCategory')}}" class="btn btn-outline-dark btn-lg">Gestion des catégories</a> 

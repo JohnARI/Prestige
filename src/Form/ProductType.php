@@ -37,16 +37,6 @@ class ProductType extends AbstractType
                 'attr' => ['placeholder' => 'Entrez le type de mouvement']
             ])
 
-            ->add('matter', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez lz matière']
-            ])
-
-            ->add('length', IntegerType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la longueur']
-            ])
-
             ->add('braceletType', TextType::class, [
                 'label' => 'Produit',
                 'attr' => ['placeholder' => 'Entrez le type de bracelet']
