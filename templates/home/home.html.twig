@@ -22,7 +22,7 @@
 
     .section-products .single-product {
         margin-bottom: 26px;
-        border: 1px solid black;
+        box-shadow: 1px 1px 12px #555;
     }
 
     .section-products .single-product .part-1 {
@@ -31,6 +31,7 @@
         max-height: 290px;
         margin-bottom: 20px;
         overflow: hidden;
+        box-shadow: 0 8px 6px -6px black;
     }
 
     .section-products .single-product .part-1::before {
@@ -141,7 +142,7 @@
 
 <video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
     preload="auto"></video>
-<div>
+
 
     <div class="col-md-4 d-flex justify-content-around mx-auto mt-5 mb-4">
         <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
@@ -151,8 +152,10 @@
     </div>
 
     <a href="{{path('dashboard')}}">DASHBOARD</a>
+
+   <div class="container">
     <section class="section-products">
-        <div class="container">
+        
             <div class="row justify-content-center text-center">
                 <div class="col-md-8 col-lg-6">
 
@@ -160,6 +163,7 @@
             </div>
             <div class="row">
 
+                <!-- TODO: boucle foreach -->
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
                         <div class="part-1">
@@ -175,9 +179,45 @@
                         </div>
                     </div>
                 </div>
+                <!-- Fin de boucle -->
+            </div> <!-- Fin row -->
+        </section>
+
+        <!-- Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-        </div>
-</div>
-</section>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Fin carousel -->
+
+
+        </div> <!-- Fin container-->
+
+
+
+
+
 
 {% endblock %}
