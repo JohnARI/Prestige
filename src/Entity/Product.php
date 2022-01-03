@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use Symfony\Component\Validator\Constraints\Image;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -56,6 +57,10 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $price;
+
+
+
+
 
     public function getId(): ?int
     {
