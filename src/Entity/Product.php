@@ -35,6 +35,16 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $matter;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $length;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $braceletType;
 
     /**
@@ -94,6 +104,30 @@ class Product
     public function setMovement(string $movement): self
     {
         $this->movement = $movement;
+
+        return $this;
+    }
+
+    public function getMatter(): ?string
+    {
+        return $this->matter;
+    }
+
+    public function setMatter(string $matter): self
+    {
+        $this->matter = $matter;
+
+        return $this;
+    }
+
+    public function getLength(): ?int
+    {
+        return $this->length;
+    }
+
+    public function setLength(int $length): self
+    {
+        $this->length = $length;
 
         return $this;
     }
