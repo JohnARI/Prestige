@@ -26,9 +26,9 @@ class Category
     private $products;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
      */
-    private $name;
+    private $products;
 
     public function __construct()
     {
@@ -41,6 +41,14 @@ class Category
     }
 
 
+    public function setWoman(string $woman): self
+    {
+        $this->woman = $woman;
+
+        return $this;
+    }
+
+   
 
     /**
      * @return Collection|Product[]
