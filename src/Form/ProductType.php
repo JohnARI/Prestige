@@ -7,7 +7,11 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -50,10 +54,41 @@ class ProductType extends AbstractType
 
             ->add('strapColor', TextType::class, [
                 'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la couleur du bracelet']
+                'attr' => ['placeholder' => 'Entrez la couleur du bracelet'],
+                'constraints' => [
+
+                    new NotBlank([
+
+                        'message' => 'Ce champs ne peut être vide'
+                    ]),
+
+                    new length([
+
+                        'min' => 3,
+                        'max' => 255,
+                        'minMessage' => 'Le sous-titre doit comporter {{Limit} caractères au minimum.'
+                    ])
+
+
+                ]
             ])
 
-            ->add('picture', TextType::class)
+            ->add('picture', FileType::class, [
+
+                'label' => 'Photo',
+                'required' => true,
+                'attr' => ['placeholder' => 'Entrez une illustration'],
+                'constraints'=> [
+
+                    new Image([
+                        'mimeTypes' => ['images/jpeg', 'images/png', 'images/webp' ,'images/jpg'],
+                        'mimeTypesMessage' => 'Les types de fichiers autorisés sont : .jpeg / .png / .webp / .jpg'
+                    ])
+                ]
+
+
+
+            ])
             
             ->add('price', MoneyType::class, [
                 'label' => 'Produit',
@@ -66,7 +101,7 @@ class ProductType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
+                'label' => 'Ajouter',
                 'attr' => ['class' => 'btn btn-dark']
             ])
         ;
@@ -76,6 +111,7 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+            'allow_file_upload' => true,
         ]);
     }
 }
