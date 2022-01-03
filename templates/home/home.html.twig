@@ -1,202 +1,266 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil
-{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-	<style>
-		a,
-		a:hover {
-			text-decoration: none;
-			color: inherit;
-		}
+<style>
+    a,
+    a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
 
-		.section-products {
-			padding: 80px 0 54px;
-		}
+    .section-products {
+        padding: 80px 0 54px;
+    }
 
-		.section-products .header {
-			margin-bottom: 50px;
-		}
-
-
-		.section-products .single-product {
-			margin-bottom: 26px;
-			border: 1px solid black;
-		}
-
-		.section-products .single-product .part-1 {
-			position: relative;
-			height: 290px;
-			max-height: 290px;
-			margin-bottom: 20px;
-			overflow: hidden;
-		}
-
-		.section-products .single-product .part-1::before {
-			position: absolute;
-			content: "";
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-			transition: all 0.3s;
-		}
-
-		.section-products .single-product:hover .part-1::before {
-			transform: scale(1.2, 1.2);
-		}
-
-		.section-products #product-1 .part-1::before {
-			background: url("../assets/images/watch_register.jpg") no-repeat center;
-			background-size: cover;
-			transition: all 0.3s;
-		}
-
-		.section-products #product-2 .part-1::before {
-			background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-			background-size: cover;
-		}
-
-		.section-products #product-3 .part-1::before {
-			background: url("../assets/images/watch_register.jpg") no-repeat center;
-			background-size: cover;
-		}
-
-		.section-products #product-4 .part-1::before {
-			background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-			background-size: cover;
-		}
-
-		.section-products .single-product .part-1 .discount,
-		.section-products .single-product .part-1 .new {
-			position: absolute;
-			top: 15px;
-			left: 20px;
-			color: #ffffff;
-			background-color: #fe302f;
-			padding: 2px 8px;
-			text-transform: uppercase;
-			font-size: 0.85rem;
-		}
-
-		.section-products .single-product .part-1 .new {
-			left: 0;
-			background-color: #444444;
-		}
-
-		.section-products .single-product .part-1 ul {
-			position: absolute;
-			bottom: -41px;
-			left: 20px;
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			opacity: 0;
-			transition: bottom 0.5s, opacity 0.5s;
-		}
-
-		.section-products .single-product:hover .part-1 ul {
-			bottom: 30px;
-			opacity: 1;
-		}
-
-		.section-products .single-product .part-1 ul li {
-			display: inline-block;
-			margin-right: 4px;
-		}
-
-		.section-products .single-product .part-1 ul li a {
-			display: inline-block;
-			width: 40px;
-			height: 40px;
-			line-height: 40px;
-			background-color: #ffffff;
-			color: #444444;
-			text-align: center;
-			box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
-			transition: color 0.2s;
-		}
-
-		.section-products .single-product .part-1 ul li a:hover {
-			background-color: #444444;
-			color: #ffffff;
-		}
-
-		.section-products .single-product .part-2 .product-title {
-			font-size: 1rem;
-		}
-
-		.section-products .single-product .part-2 .product-color {
-			font-size: 1rem;
-		}
-
-		.section-products .single-product .part-2 h4 {
-			display: inline-block;
-			font-size: 1rem;
-		}
-	</style>
-
-	<video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop="" preload="auto"></video>
-	<div>
-
-		<div class="col-md-4 d-flex justify-content-around mx-auto mt-5 mb-4">
-			<a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-			<a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-			<a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-			<a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-		</div>
-
-		<section class="section-products">
-			<div class="container">
-				<a href="{{path('dashboard')}}">DASHBOARD</a>
-				<div class="row">
-
-					<h1 class="col-12 text-center my-5">Tous les produits</h1>
-
-					{% for product in products %}
-
-						<div class="col-md-3 my-3">
-							<div class="card" style="width: 18rem; height: 38rem; margin-top:-100px">
-								<img src="{{asset('uploads/' ~ product.picture)}}" class="card-img-top img-card-custom" style="height:20rem" alt="{{ product.name | length > 30 ? product.name|slice(0, 30) ~ '...' : product.name }}">
-								<ul class="list-group list-group-flush">
-									<li class="list-group-item">Categorie :
-										{{ product.category.name }}</li>
-								</ul>
-								
+    .section-products .header {
+        margin-bottom: 50px;
+    }
 
 
 
+    .section-products .single-product {
+        margin-bottom: 26px;
+        box-shadow: 1px 1px 12px #555;
+    }
 
-								<div class="card-body">
+    .section-products .single-product .part-1 {
+        position: relative;
+        height: 290px;
+        max-height: 290px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 6px -6px black;
+    }
 
-									<h5 class="card-title">{{ product.name | length > 20 ? product.title | slice(0, 20) ~ '...' : product.title }}</h5>
-									<a href="{{ path( 'show_product', {'id' : product.id} ) }}" class="btn btn-warning d-block mx-auto">Voir le produit</a>
-								</div>
-							</div>
-						</div>
+    .section-products .single-product .part-1::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        transition: all 0.3s;
+    }
 
-					{% endfor %}
+    .section-products .single-product:hover .part-1::before {
+        transform: scale(1.2, 1.2);
+    }
 
-					<div class="col-md-6 col-lg-4 col-xl-3">
-						<div id="product-1" class="single-product">
-							<div class="part-1">
-								<ul>
-									<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-									<li><a href="#"><i class="fas fa-heart"></i></a></li>
-									<li><a href="#"><i class="fas fa-expand"></i></a></li>
-								</ul>
-							</div>
-							<div class="part-2">
-								<h3 class="product-title">Titre</h3>
-								<h4 class="product-price">Prix</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    .section-products #product-1 .part-1::before {
+        background: url("../assets/images/watch_register.jpg") no-repeat center;
+        background-size: cover;
+        transition: all 0.3s;
+    }
+
+    .section-products #product-2 .part-1::before {
+        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
+        background-size: cover;
+    }
+
+    .section-products #product-3 .part-1::before {
+        background: url("../assets/images/watch_register.jpg") no-repeat center;
+        background-size: cover;
+    }
+
+    .section-products #product-4 .part-1::before {
+        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
+        background-size: cover;
+    }
+
+    .section-products .single-product .part-1 .discount,
+    .section-products .single-product .part-1 .new {
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        color: #ffffff;
+        background-color: #fe302f;
+        padding: 2px 8px;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
+    .section-products .single-product .part-1 .new {
+        left: 0;
+        background-color: #444444;
+    }
+
+    .section-products .single-product .part-1 ul {
+        position: absolute;
+        bottom: -41px;
+        left: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        opacity: 0;
+        transition: bottom 0.5s, opacity 0.5s;
+    }
+
+    .section-products .single-product:hover .part-1 ul {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    .section-products .single-product .part-1 ul li {
+        display: inline-block;
+        margin-right: 4px;
+    }
+
+    .section-products .single-product .part-1 ul li a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #ffffff;
+        color: black;
+        text-align: center;
+        box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
+        transition: color 0.2s;
+    }
+
+    .section-products .single-product .part-1 ul li a:hover {
+    
+        color: red;
+    }
+
+    .section-products .single-product .part-2 .product-title {
+        font-size: 1rem;
+    }
+
+    .section-products .single-product .part-2 .product-color {
+        font-size: 1rem;
+    }
+
+    .section-products .single-product .part-2 h4 {
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+</style>
+
+<video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
+    preload="auto"></video>
+
+
+    <div class="col-md-4 d-flex justify-content-around mx-auto mt-5 mb-4">
+        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
+        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
+        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
+        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
+    </div>  
+    <div class="container">
+
+    <section class="section-products">
+      
+            <a href="{{path('dashboard')}}">DASHBOARD</a>
+            <div class="row">
+
+                <!-- TODO: boucle foreach -->
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Titre</h3> {#<!-- {{product.title}}--> #}
+                            <h4 class="product-price">Prix</h4>  {#<!-- {{product.price}}-->#}
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin de boucle -->
+                <div class="col-md-6 col-lg-4 col-xl-3"> <!-- A supprimé après avoir fais la boucle -->
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Titre</h3>
+                            <h4 class="product-price">Prix</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Titre</h3>
+                            <h4 class="product-price">Prix</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">Titre</h3>
+                            <h4 class="product-price">Prix</h4>
+                        </div>
+                    </div>
+                </div>  <!-- Fin de a supprimé -->
+
+
+
+            </div> <!-- Fin row -->
+        </section>
+
+        <!-- Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide col-md-10 mx-auto" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Carousel image 1">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/images/montres_homme/montre_cartier_homme2.webp" class="d-block w-100" alt="Carousel image 2">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/images/montres_homme/montre_omega_homme2.jpg" class="d-block w-100" alt="Carousel image 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Fin carousel -->
+
+ 
+</div> <!-- Fin container-->
+
+
+
+
 
 {% endblock %}
