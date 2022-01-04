@@ -9,6 +9,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\EditProductType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -118,22 +119,23 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/admin/edit/product/{id}", name="edit_product")
+     * @Route("/admin/modifier/produit/{id}", name="edit_product")
      * @param Product $article
      * @param Request $request
      * @return Response
      */
-    public function editProduct(Product $product, Request $request): Response
+    public function editProduct($id, Product $product, Request $request): Response
     {
+        $product = $this->entityManager->getRepository(Product::class)->findBy(['id'=>$id]);
         # Supprimer le edit form et utiliser ProductType (configurer les options) : pas besoin de dupliquer un form
-        $form = $this->createForm(ProductType::class, $product)
+        $form = $this->createForm(EditProductType::class, $product[0])
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             # Créer une nouvelle propriété dans l'entité : setUpdatedAt()
 
-            $this->entityManager->persist($product);
+            $this->entityManager->persist($product[0]);
             $this->entityManager->flush();
         }
 

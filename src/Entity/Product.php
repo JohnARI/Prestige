@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
+
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -41,6 +43,7 @@ class Product
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
      */
     private $category;
+    
 
     public function getId(): ?int
     {
@@ -105,5 +108,10 @@ class Product
         $this->category = $category;
 
         return $this;
+    }
+
+    public function __toString()//Cette fonction que nous avons construit permet de convertir le type en string
+    {
+        return $this->name;
     }
 }
