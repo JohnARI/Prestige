@@ -50,7 +50,6 @@
     }
 
     .section-products #product-1 .part-1::before {
-        background: url("../assets/images/watch_register.jpg") no-repeat center;
         background-size: cover;
         transition: all 0.3s;
     }
@@ -61,7 +60,6 @@
     }
 
     .section-products #product-3 .part-1::before {
-        background: url("../assets/images/watch_register.jpg") no-repeat center;
         background-size: cover;
     }
 
@@ -158,9 +156,13 @@
             <div class="row">
 
                 <!-- TODO: boucle foreach -->
+                {% for product in products %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
                         <div class="part-1">
+                            <div class="image mx-auto">
+                            <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
+                            </div>
                             <ul>
                                 <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-heart"></i></a></li>
@@ -168,59 +170,14 @@
                             </ul>
                         </div>
                         <div class="part-2">
-                            <h3 class="product-title">Titre</h3> {#<!-- {{product.title}}--> #}
-                            <h4 class="product-price">Prix</h4>  {#<!-- {{product.price}}-->#}
+                            <h3 class="product-title">{{product.name}}</h3>
+                            <h4 class="product-price">{{product.price}}</h4>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
                 <!-- Fin de boucle -->
-                <div class="col-md-6 col-lg-4 col-xl-3"> <!-- A supprimé après avoir fais la boucle -->
-                    <div id="product-1" class="single-product">
-                        <div class="part-1">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="part-2">
-                            <h3 class="product-title">Titre</h3>
-                            <h4 class="product-price">Prix</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div id="product-1" class="single-product">
-                        <div class="part-1">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="part-2">
-                            <h3 class="product-title">Titre</h3>
-                            <h4 class="product-price">Prix</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div id="product-1" class="single-product">
-                        <div class="part-1">
-                            <ul>
-                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="part-2">
-                            <h3 class="product-title">Titre</h3>
-                            <h4 class="product-price">Prix</h4>
-                        </div>
-                    </div>
-                </div>  <!-- Fin de a supprimé -->
+               
 
 
 
