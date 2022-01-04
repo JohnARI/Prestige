@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\Category;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,11 +32,23 @@ class HomeController extends AbstractController
     /**
      * @Route("/montreshommes", name="montres_hommes")
      */
-    public function montresHommes(): Response {
+    public function montresHommes(?Category $category): Response {
     
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        if($category){
+            $products = $category->getProducts()->getValues(); //Le getArticles pour récupérer les articles et getValues les valeures des produits
+
+        }else{
+
+            $products = null;
+            return $this->redirectToRoute('home');
+
+        }
+
+        $categories = $this->repoCategory->findAll();
+
         return $this->render("montres/montres_hommes.html.twig",[
-            'products' => $products
+            'products' => $products,
+            'categories'=>$categories
         ]);
     }   
     
