@@ -45,30 +45,7 @@
         transition: all 0.3s;
     }
 
-    .section-products .single-product:hover .part-1::before {
-        transform: scale(1.2, 1.2);
-    }
-
-    .section-products #product-1 .part-1::before {
-        background-size: cover;
-        transition: all 0.3s;
-    }
-
-    .section-products #product-2 .part-1::before {
-        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-        background-size: cover;
-    }
-
-    .section-products #product-3 .part-1::before {
-        background-size: cover;
-    }
-
-    .section-products #product-4 .part-1::before {
-        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-        background-size: cover;
-    }
-
-    .section-products .single-product .part-1 .discount,
+  
     .section-products .single-product .part-1 .new {
         position: absolute;
         top: 15px;
@@ -136,17 +113,37 @@
         font-size: 1rem;
     }
 
+    .fs-1 {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  position: relative;
+}
+
+.fs-1:after {
+
+bottom: 0;
+content: "";
+height: 2px;
+left: 50%;
+position: absolute;
+background: rgb(0, 0, 0);
+transition: width 0.3s ease 0s, left 0.3s ease 0s;
+width: 0;
+}
+
+.fs-1:hover:after {
+width: 100%;
+left: 0;
+}
+
 </style>
 
 <video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
     preload="auto"></video>
 
 
-    <div class="col-md-4 d-flex justify-content-around mx-auto mt-5 mb-4">
-        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
-        <a href="" class="btn-lg btn-dark rounded-0 me-2">Texte ici</a>
+    <div class="d-flex justify-content-center mt-5 mb-4">
+       <h2 class="fs-1" href="">BEST SELLER</h2>
     </div>  
     <div class="container">
 
@@ -159,10 +156,9 @@
                 {% for product in products %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
-                        <div class="part-1">
-                            <div class="image mx-auto">
+                        <div class="part-1 d-flex justify-content-center">
+
                             <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
-                            </div>
                             <ul>
                                 <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-heart"></i></a></li>
