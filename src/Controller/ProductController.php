@@ -123,9 +123,9 @@ class ProductController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function editArticle(Product $product, Request $request): Response
+    public function editProduct(Product $product, Request $request): Response
     {
-        # Supprimer le edit form et utiliser ArticleType (configurer les options) : pas besoin de dupliquer un form
+        # Supprimer le edit form et utiliser ProductType (configurer les options) : pas besoin de dupliquer un form
         $form = $this->createForm(ProductType::class, $product)
             ->handleRequest($request);
 
