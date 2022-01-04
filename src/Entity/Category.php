@@ -29,6 +29,10 @@ class Category
      */
     private $products;
 
+    public function __toString() {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
@@ -81,8 +85,5 @@ class Category
         return $this;
     }
 
-    public function __toString()//Cette fonction que nous avons construit permet de convertir le type en string
-    {
-        return $this->name;
-    }
+
 }

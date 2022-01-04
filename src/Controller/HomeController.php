@@ -45,7 +45,7 @@ class HomeController extends AbstractController
     public function montresFemmes(): Response {
     
         $products = $this->entityManager->getRepository(Product::class)->findAll();
-        return $this->render("montres/montres_hommes.html.twig",[
+        return $this->render("montres/montres_femmes.html.twig",[
             'products' => $products
         ]);
     } 

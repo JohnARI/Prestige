@@ -24,6 +24,7 @@
                 <th scope="col">Id</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Description</th>
+                <th scope="col">Catégorie</th>
                 <th scope="col">Photo</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Actions</th>
@@ -35,6 +36,7 @@
                 <th>{{product.id}}</th>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
+                <td>{{product.category}}</td>
                 <td><img style="height: 100px; width:100px;" src="{{ asset('uploads/' ~ product.picture)}}" alt=""></td>
                 <td>{{product.price}} €</td>
                 

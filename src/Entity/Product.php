@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
  */
@@ -44,6 +45,10 @@ class Product
      */
     private $category;
     
+
+        public function __toString() {
+            return $this->name;
+        }
 
     public function getId(): ?int
     {
