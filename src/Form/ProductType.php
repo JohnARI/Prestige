@@ -23,28 +23,13 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Produit',
+                'label' => 'Nom',
                 'attr' => ['placeholder' => 'Entrez le nom du produit']
             ])
 
-            ->add('dialColor', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la couleur du cadran']
-            ])
-
-            ->add('movement', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez le type de mouvement']
-            ])
-
-            ->add('braceletType', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez le type de bracelet']
-            ])
-
-            ->add('strapColor', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la couleur du bracelet'],
+            ->add('description', TextType::class, [
+                'label' => 'Description',
+                'attr' => ['placeholder' => 'Entrez la description du produit'],
                 'constraints' => [
 
                     new NotBlank([
@@ -52,10 +37,10 @@ class ProductType extends AbstractType
                         'message' => 'Ce champs ne peut être vide'
                     ]),
 
-                    new length([
+                    new Length([
 
                         'min' => 3,
-                        'max' => 255,
+                        'max' => 5000,
                         'minMessage' => 'Le sous-titre doit comporter {{Limit} caractères au minimum.'
                     ])
 
@@ -81,7 +66,7 @@ class ProductType extends AbstractType
             ])
             
             ->add('price', MoneyType::class, [
-                'label' => 'Produit',
+                'label' => 'Prix',
                 'attr' => ['placeholder' => 'Entrez un prix']
             ])
 
