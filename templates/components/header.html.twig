@@ -42,8 +42,13 @@ a:hover:after {
           <li class="nav-item">
             <a class="nav-link text-white" href="#">La marque</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Les montres</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Les montres</a>
+             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{path('montres_hommes')}}">Montres hommes</a></li>
+            <li><a class="dropdown-item" href="{{path('montres_femmes')}}">Montres femmes</a></li>
+            <li><a class="dropdown-item" href="{{path('toutes_les_montres')}}">Toutes les montres</a></li>
+          </ul>
           </li>
         </ul> 
        </div>

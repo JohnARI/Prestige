@@ -56,7 +56,7 @@ class ProductType extends AbstractType
                 'constraints'=> [
 
                     new Image([
-                        'mimeTypes' => ['images/jpeg', 'images/png', 'images/webp' ,'images/jpg'],
+                        'mimeTypes' => ['image/jpeg', 'image/png', 'image/webp' ,'image/jpg'],
                         'mimeTypesMessage' => 'Les types de fichiers autorisés sont : .jpeg / .png / .webp / .jpg'
                     ])
                 ]
