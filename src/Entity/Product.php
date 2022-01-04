@@ -22,40 +22,10 @@ class Product
      */
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
+     /**
+     * @ORM\Column(type="text")
      */
-    private $dialColor;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $movement;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $matter;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $length;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $braceletType;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $strapColor;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
-     */
-    private $category;
+    private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -84,74 +54,14 @@ class Product
         return $this;
     }
 
-    public function getDialColor(): ?string
+    public function getDescription(): ?string
     {
-        return $this->dialColor;
+        return $this->description;
     }
 
-    public function setDialColor(string $dialColor): self
+    public function setDescription(string $description): self
     {
-        $this->dialColor = $dialColor;
-
-        return $this;
-    }
-
-    public function getMovement(): ?string
-    {
-        return $this->movement;
-    }
-
-    public function setMovement(string $movement): self
-    {
-        $this->movement = $movement;
-
-        return $this;
-    }
-
-    public function getMatter(): ?string
-    {
-        return $this->matter;
-    }
-
-    public function setMatter(string $matter): self
-    {
-        $this->matter = $matter;
-
-        return $this;
-    }
-
-    public function getLength(): ?int
-    {
-        return $this->length;
-    }
-
-    public function setLength(int $length): self
-    {
-        $this->length = $length;
-
-        return $this;
-    }
-
-    public function getBraceletType(): ?string
-    {
-        return $this->braceletType;
-    }
-
-    public function setBraceletType(string $braceletType): self
-    {
-        $this->braceletType = $braceletType;
-
-        return $this;
-    }
-
-    public function getStrapColor(): ?string
-    {
-        return $this->strapColor;
-    }
-
-    public function setStrapColor(string $strapColor): self
-    {
-        $this->strapColor = $strapColor;
+        $this->description = $description;
 
         return $this;
     }

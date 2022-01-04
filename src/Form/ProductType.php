@@ -7,7 +7,11 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,44 +23,50 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Produit',
+                'label' => 'Nom',
                 'attr' => ['placeholder' => 'Entrez le nom du produit']
             ])
 
-            ->add('dialColor', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la couleur du cadran']
+            ->add('description', TextType::class, [
+                'label' => 'Description',
+                'attr' => ['placeholder' => 'Entrez la description du produit'],
+                'constraints' => [
+
+                    new NotBlank([
+
+                        'message' => 'Ce champs ne peut être vide'
+                    ]),
+
+                    new Length([
+
+                        'min' => 3,
+                        'max' => 5000,
+                        'minMessage' => 'Le sous-titre doit comporter {{Limit} caractères au minimum.'
+                    ])
+
+
+                ]
             ])
 
-            ->add('movement', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez le type de mouvement']
-            ])
+            ->add('picture', FileType::class, [
 
-            ->add('matter', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez lz matière']
-            ])
+                'label' => 'Photo',
+                'required' => true,
+                'attr' => ['placeholder' => 'Entrez une illustration'],
+                'constraints'=> [
 
-            ->add('length', IntegerType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la longueur']
-            ])
+                    new Image([
+                        'mimeTypes' => ['images/jpeg', 'images/png', 'images/webp' ,'images/jpg'],
+                        'mimeTypesMessage' => 'Les types de fichiers autorisés sont : .jpeg / .png / .webp / .jpg'
+                    ])
+                ]
 
-            ->add('braceletType', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez le type de bracelet']
-            ])
 
-            ->add('strapColor', TextType::class, [
-                'label' => 'Produit',
-                'attr' => ['placeholder' => 'Entrez la couleur du bracelet']
-            ])
 
-            ->add('picture', TextType::class)
+            ])
             
             ->add('price', MoneyType::class, [
-                'label' => 'Produit',
+                'label' => 'Prix',
                 'attr' => ['placeholder' => 'Entrez un prix']
             ])
 
@@ -66,7 +76,7 @@ class ProductType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer',
+                'label' => 'Ajouter',
                 'attr' => ['class' => 'btn btn-dark']
             ])
         ;
@@ -76,6 +86,7 @@ class ProductType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Product::class,
+            'allow_file_upload' => true,
         ]);
     }
 }
