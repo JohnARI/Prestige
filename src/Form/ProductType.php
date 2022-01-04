@@ -29,7 +29,7 @@ class ProductType extends AbstractType
 
             ->add('description', TextType::class, [
                 'label' => 'Description',
-                'attr' => ['placeholder' => 'Entrez la deescription du produit'],
+                'attr' => ['placeholder' => 'Entrez la description du produit'],
                 'constraints' => [
 
                     new NotBlank([
@@ -56,7 +56,7 @@ class ProductType extends AbstractType
                 'constraints'=> [
 
                     new Image([
-                        'mimeTypes' => ['images/jpeg', 'images/png', 'images/webp' ,'images/jpg'],
+                        'mimeTypes' => ['image/jpeg', 'image/png', 'image/webp' ,'image/jpg'],
                         'mimeTypesMessage' => 'Les types de fichiers autorisés sont : .jpeg / .png / .webp / .jpg'
                     ])
                 ]

@@ -30,7 +30,7 @@
             {% for category in categories %}
             <tr>
                 <th>{{category.id}}</th>
-                <td>{{category.sexe}}</td>
+                <td>{{category.name}}</td>
                 
                 <td>
                      <a href="{{path('edit_category',{'id': category.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
