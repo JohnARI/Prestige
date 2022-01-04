@@ -115,8 +115,5 @@ class Product
         return $this;
     }
 
-    public function __toString()//Cette fonction que nous avons construit permet de convertir le type en string
-    {
-        return $this->name;
-    }
+    
 }

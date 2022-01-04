@@ -9,6 +9,7 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\EditProductType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -126,7 +127,7 @@ class ProductController extends AbstractController
     public function editProduct(Product $product, Request $request): Response
     {
         # Supprimer le edit form et utiliser ProductType (configurer les options) : pas besoin de dupliquer un form
-        $form = $this->createForm(ProductType::class, $product)
+        $form = $this->createForm(EditProductType::class, $product)
             ->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

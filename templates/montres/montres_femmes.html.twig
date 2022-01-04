@@ -138,7 +138,10 @@ left: 0;
     <div class="container">
         <section class="section-products"> 
 
+        
+
                 {% for product in products %}
+
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
                         <div class="part-1 d-flex justify-content-center">
@@ -151,11 +154,13 @@ left: 0;
                             </ul>
                         </div>
                         <div class="part-2">
-                            <h3 class="product-title">{{product.name}}</h3>
+                            <h3 class="product-name">{{product.name}}</h3>
                             <h4 class="product-price">{{product.price}}</h4>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            
+            {% endfor %}
+                
 
 {% endblock %}
