@@ -44,14 +44,13 @@ class Category
         return $this->name;
     }
 
-    public function setSexe(string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    
     /**
      * @return Collection|Product[]
      */
@@ -80,10 +79,5 @@ class Category
         }
 
         return $this;
-    }
-
-    public function __toString()//Cette fonction que nous avons construit permet de convertir le type en string
-    {
-        return $this->name;
     }
 }

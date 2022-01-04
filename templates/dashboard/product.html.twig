@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Les produits{% endblock %}
 
 {% block body %}
 
@@ -22,16 +22,10 @@
         <thead class="table-dark">
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nom du produit</th>
-                <th scope="col">Couleur du cadran</th>
-                <th scope="col">Mouvement</th>
-                <th scope="col">Matière</th>
-                <th scope="col">Longueur</th>
-                <th scope="col">Type du bracelet</th>
-                <th scope="col">Couleur du bracelet</th>
-                <th scope="col">Catégorie</th>
-                <th scope="col">Prix</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
                 <th scope="col">Photo</th>
+                <th scope="col">Prix</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -40,13 +34,10 @@
             <tr>
                 <th>{{product.id}}</th>
                 <td>{{product.name}}</td>
-                <td>{{product.dialColor}}</td>
-                <td>{{product.movement}}</td>
-                <td>{{product.braceletType}}</td>
-                <td>{{product.strapColor}}</td>
-                <td>{{product.category}}</td>
-                <td>{{product.price}}€</td>
-                <td> <img style="width:150px; height: 150px;" src="{{product.picture}}" alt="Photo"> </td>
+                <td>{{product.description}}</td>
+                <td><img style="height: 100px; width:100px;" src="{{product.picture}}" alt=""></td>
+                <td>{{product.price}} €</td>
+                
                 <td>
                      <a href="{{path('edit_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
                      <a href="{{path('delete_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
@@ -56,7 +47,6 @@
             {% endfor %}
         </tbody>
     </table>
-
     </div>
 
 

@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
-use Symfony\Component\Validator\Constraints\Image;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -23,7 +22,7 @@ class Product
      */
     private $name;
 
-     /**
+    /**
      * @ORM\Column(type="text")
      */
     private $description;
@@ -34,13 +33,14 @@ class Product
     private $picture;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $price;
 
-
-
-
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -71,18 +71,6 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     public function getPicture(): ?string
     {
         return $this->picture;
@@ -95,14 +83,26 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
