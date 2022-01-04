@@ -107,7 +107,7 @@ class ProductController extends AbstractController
             $this->entityManager->persist($product);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'Produit ajouter!');
+            $this->addFlash('success', 'Produit ajouté!');
 
             return $this->redirectToRoute('dashboard');
         }
@@ -119,9 +119,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/admin/edit/product/{id}", name="edit_product")
-     * @param Product $article
-     * @param Request $request
-     * @return Response
+     * 
      */
     public function editArticle(Product $product, Request $request): Response
     {
@@ -144,8 +142,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/show/product/{id}", name="show_product")
-     * @param Product $viewProduct
-     * @return Response
+     * 
      */
     public function showProduct(Product $viewProduct): Response
     {
@@ -167,7 +164,7 @@ class ProductController extends AbstractController
         $this->entityManager->flush();
 
         $this->addFlash('success', 'Produit supprimé !');
-
-        return $this->redirectToRoute('dashboard/product.html.twig');
+        return $this->redirectToRoute('dashboard');
     }
+    
 }
