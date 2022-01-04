@@ -113,13 +113,13 @@
         font-size: 1rem;
     }
 
-    .fs-1 {
+    .fs-2 {
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   position: relative;
 }
 
-.fs-1:after {
+.fs-2:after {
 
 bottom: 0;
 content: "";
@@ -131,7 +131,7 @@ transition: width 0.3s ease 0s, left 0.3s ease 0s;
 width: 0;
 }
 
-.fs-1:hover:after {
+.fs-2:hover:after {
 width: 100%;
 left: 0;
 }
@@ -142,15 +142,14 @@ left: 0;
     preload="auto"></video>
 
 
-    <div class="d-flex justify-content-center mt-5 mb-4">
-       <h2 class="fs-1" href="">BEST SELLER</h2>
-    </div>  
+    
     <div class="container">
-
-    <section class="section-products">
-      
-            <a href="{{path('dashboard')}}">DASHBOARD</a>
+        <section class="section-products">
+            
             <div class="row">
+                <div class="d-flex justify-content-center mt-5 mb-4">
+               <h2 class="fs-2" href="">BEST SELLER</h2>
+            </div>  
 
                 <!-- TODO: boucle foreach -->
                 {% for product in products %}
