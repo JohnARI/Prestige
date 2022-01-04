@@ -51,7 +51,7 @@ class HomeController extends AbstractController
     } 
 
     /**
-     * @Route("/toutes_le_montres", name="toutes_les_montres")
+     * @Route("/toutes_les_montres", name="toutes_les_montres")
      */
     public function toutesMontres(): Response {
     
