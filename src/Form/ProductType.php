@@ -7,6 +7,7 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -75,10 +76,15 @@ class ProductType extends AbstractType
                 'choice_label' => 'name'
             ])
 
+            ->add('bestseller', CheckboxType::class, [
+                'label'    => 'Is best Seller',
+                'required' => false,
+            ])
+
             ->add('submit', SubmitType::class, [
                 'label' => 'Ajouter',
                 'attr' => ['class' => 'btn btn-dark']
-            ])
+            ]);
         ;
     }
 

@@ -13,10 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduct, CategoryRepository $repoCategory )
+    public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduit )
     {
         $this->entityManager = $entityManager;
-        $this->repoCategory = $repoCategory;
+        $this->repoProduit = $repoProduit;
     }
     /**
      * @Route("/", name="home")
@@ -26,9 +26,13 @@ class HomeController extends AbstractController
 
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
+        $produitBestSeller = $this->repoProduit->findBybestseller(1);
+
 
         return $this->render('home/home.html.twig',[
-            'products'=> $products
+
+            'products'=> $products,
+            'productBestSeller'=>$produitBestSeller
         ]);
     }
 
@@ -45,8 +49,6 @@ class HomeController extends AbstractController
 
         
 
-        $categories = $this->repoCategory->findAll();
-
         return $this->render("montres/montres_hommes.html.twig",[
             'products' => $products,
             
@@ -59,6 +61,8 @@ class HomeController extends AbstractController
     public function montresFemmes(): Response {
     
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(2);
+
+        
         return $this->render("montres/montres_femmes.html.twig",[
             'products' => $products
         ]);

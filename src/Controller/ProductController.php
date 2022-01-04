@@ -136,6 +136,8 @@ class ProductController extends AbstractController
 
             $this->entityManager->persist($product);
             $this->entityManager->flush();
+
+            return $this->redirect($this->generateUrl('home'));
         }
 
         return $this->render('dashboard/edit_product.html.twig', [
