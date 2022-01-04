@@ -24,8 +24,42 @@ class HomeController extends AbstractController
 
 
         return $this->render('home/home.html.twig',[
-
             'products'=> $products
         ]);
     }
+
+    /**
+     * @Route("/montreshommes", name="montres_hommes")
+     */
+    public function montresHommes(): Response {
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        return $this->render("home/montres/montres_hommes.html.twig",[
+            'products' => $products
+        ]);
+    }   
+    
+    /**
+     * @Route("/montresfemmes", name="montres_femmes")
+     */
+    public function montresFemmes(): Response {
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        return $this->render("home/montres/montres_hommes.html.twig",[
+            'products' => $products
+        ]);
+    } 
+
+    /**
+     * @Route("/toutes_le_montres", name="toutes_les_montres")
+     */
+    public function toutesMontres(): Response {
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        return $this->render("home/montres/toutes_les_montres.html.twig",[
+            'products' => $products
+        ]);
+    } 
+        
+    
 }
