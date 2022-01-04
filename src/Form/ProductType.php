@@ -29,7 +29,7 @@ class ProductType extends AbstractType
 
             ->add('description', TextType::class, [
                 'label' => 'Description',
-                'attr' => ['placeholder' => 'Entrez la deescription du produit'],
+                'attr' => ['placeholder' => 'Entrez la description du produit'],
                 'constraints' => [
 
                     new NotBlank([
