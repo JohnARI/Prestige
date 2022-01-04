@@ -136,9 +136,7 @@ left: 0;
 
 </style>
 
-<video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
-    preload="auto"></video>
-
+<img src="assets/images/Header_montres_hommes.png" class="modal-fullscreen" alt="Header Montres Femmes">
 
     
     <div class="container">
@@ -169,61 +167,6 @@ left: 0;
                     </div>
                 </div>
                 {% endfor %}
-
-
-                    <div class="row justify-content-center">
-		<div class='col-md-8'>
-        
-			<h2>Categories<h2>
-					<ul class="list-group">
-						{% for category in categories %}
-							<li class="list-group-item d-flex justify-content-between">
-								<a href="{{path('show_product',{'id' : category.id})}}"></a>
-								<span class="badge bg-primary ba-pill">product(s)</span>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-			</div>
-               
-
-
-
-            </div> <!-- Fin row -->
-        </section>
-
-        <!-- Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide col-md-10 mx-auto" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Carousel image 1">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/images/montres_homme/montre_cartier_homme2.webp" class="d-block w-100" alt="Carousel image 2">
-              </div>
-              <div class="carousel-item">
-                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Carousel image 3">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <!-- Fin carousel -->
-
- 
-</div> <!-- Fin container-->
-
 
 
 

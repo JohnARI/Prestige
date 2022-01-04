@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,9 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduct, CategoryRepository $repoCategory )
     {
         $this->entityManager = $entityManager;
+        $this->repoCategory = $repoCategory;
     }
     /**
      * @Route("/", name="home")
@@ -29,26 +32,24 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
+   /**
      * @Route("/montreshommes", name="montres_hommes")
      */
-    public function montresHommes(?Category $category): Response {
+    public function montresHommes(
+
+    ): Response {
     
-        if($category){
-            $products = $category->getProducts()->getValues(); //Le getArticles pour récupérer les articles et getValues les valeures des produits
+       
 
-        }else{
+        $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
 
-            $products = null;
-            return $this->redirectToRoute('home');
-
-        }
+        
 
         $categories = $this->repoCategory->findAll();
 
         return $this->render("montres/montres_hommes.html.twig",[
             'products' => $products,
-            'categories'=>$categories
+            
         ]);
     }   
     
@@ -57,7 +58,7 @@ class HomeController extends AbstractController
      */
     public function montresFemmes(): Response {
     
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        $products = $this->entityManager->getRepository(Product::class)->findByCategory(2);
         return $this->render("montres/montres_femmes.html.twig",[
             'products' => $products
         ]);
