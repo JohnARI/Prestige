@@ -3,7 +3,6 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-
 <style>
     a,
     a:hover {
@@ -44,32 +43,7 @@
         transition: all 0.3s;
     }
 
-    .section-products .single-product:hover .part-1::before {
-        transform: scale(1.2, 1.2);
-    }
-
-    .section-products #product-1 .part-1::before {
-        background: url("../assets/images/watch_register.jpg") no-repeat center;
-        background-size: cover;
-        transition: all 0.3s;
-    }
-
-    .section-products #product-2 .part-1::before {
-        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-        background-size: cover;
-    }
-
-    .section-products #product-3 .part-1::before {
-        background: url("../assets/images/watch_register.jpg") no-repeat center;
-        background-size: cover;
-    }
-
-    .section-products #product-4 .part-1::before {
-        background: url("https://i.ibb.co/cLnZjnS/2.jpg") no-repeat center;
-        background-size: cover;
-    }
-
-    .section-products .single-product .part-1 .discount,
+  
     .section-products .single-product .part-1 .new {
         position: absolute;
         top: 15px;
@@ -137,7 +111,57 @@
         font-size: 1rem;
     }
 
+.fs-2:after {
+
+bottom: 0;
+content: "";
+height: 2px;
+left: 50%;
+position: absolute;
+background: rgb(0, 0, 0);
+transition: width 0.3s ease 0s, left 0.3s ease 0s;
+width: 0;
+}
+
+.fs-2:hover:after {
+width: 100%;
+left: 0;
+}
+
 </style>
 
 
-{% endblock %}
+    
+    <div class="container">
+        <section class="section-products">
+            
+            <div class="row">
+
+                {% for product in products %}
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div id="product-1" class="single-product">
+                        <div class="part-1 d-flex justify-content-center">
+
+                            <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="part-2">
+                            <h3 class="product-title">{{product.name}}</h3>
+                            <h4 class="product-price">{{product.price}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+               
+
+
+
+            </div> <!-- Fin row -->
+        </section>
+        </div> 
+
+        {% endblock %}
