@@ -10,6 +10,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Form\EditProductType;
+use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +25,10 @@ class ProductController extends AbstractController
     /**
      * @param EntityManagerInterface $entityManager
      */
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, PanierService $panierService)
     {
         $this->entityManager = $entityManager;
+        $this->panierService = $panierService;
     }
 
     /**
@@ -130,6 +132,8 @@ class ProductController extends AbstractController
         $form = $this->createForm(EditProductType::class, $product)
             ->handleRequest($request);
 
+        $totalPanier = $this->panierService->getTotalPanier();
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             # Créer une nouvelle propriété dans l'entité : setUpdatedAt()
@@ -141,6 +145,8 @@ class ProductController extends AbstractController
         }
 
         return $this->render('dashboard/edit_product.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
             'form' => $form->createView()
         ]);
     }
@@ -154,8 +160,11 @@ class ProductController extends AbstractController
     {
         $product = $this->entityManager->getRepository(Product::class)->find($viewProduct->getId());
 
+        $totalPanier = $this->panierService->getTotalPanier();
+
         return $this->render('product/show_product.html.twig', [
             'product' => $product,
+            'TotalPanier'=>$totalPanier
         ]);
     }
 

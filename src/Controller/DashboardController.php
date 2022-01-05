@@ -50,11 +50,15 @@ class DashboardController extends AbstractController
      */
     public function showUser(): Response
     {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
         $users = $this->entityManager->getRepository(User::class)->findAll();
 
         return $this->render('dashboard/user.html.twig', [
 
             'users' => $users,
+            'TotalPanier'=>$totalPanier
         ]);
     }
 
@@ -63,11 +67,15 @@ class DashboardController extends AbstractController
      */
     public function showProduct(): Response
     {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
         return $this->render('dashboard/product.html.twig', [
 
             'products' => $products,
+            'TotalPanier'=>$totalPanier
         ]);
     }
 
@@ -76,11 +84,15 @@ class DashboardController extends AbstractController
      */
     public function showCatagory(): Response
     {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
         $categories = $this->entityManager->getRepository(Category::class)->findAll();
 
         return $this->render('dashboard/category.html.twig', [
 
             'categories' => $categories,
+            'TotalPanier'=>$totalPanier
         ]);
     }
 
@@ -96,6 +108,8 @@ class DashboardController extends AbstractController
         $form = $this->createForm(RegisterType::class, $user);
         $form->handleRequest($request);
 
+        $totalPanier = $this->panierService->getTotalPanier();
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user = $form->getData();
@@ -106,7 +120,9 @@ class DashboardController extends AbstractController
         }
 
         return $this->render('dashboard/add_user.html.twig', [
-            'form' => $form->createView(),
+
+            'TotalPanier'=>$totalPanier,
+            'form' => $form->createView()
         ]);
     }
 
@@ -115,6 +131,8 @@ class DashboardController extends AbstractController
      */
     public function editUser($id, Request $request): Response
     {
+
+        $totalPanier = $this->panierService->getTotalPanier();
 
         $users = $this->entityManager->getRepository(User::class)->find($id);
 
@@ -129,7 +147,9 @@ class DashboardController extends AbstractController
         }
 
         return $this->render('dashboard/edit_user.html.twig', [
-            'form' => $form->createView(),
+
+            'TotalPanier'=>$totalPanier,
+            'form' => $form->createView()
         ]);
     }
 
@@ -140,6 +160,7 @@ class DashboardController extends AbstractController
     {
         $this->entityManager->remove($user);
         $this->entityManager->flush();
+        
 
         $this->addFlash('success', 'Utilisateur supprimé !');
 
@@ -156,6 +177,7 @@ class DashboardController extends AbstractController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
+        $totalPanier = $this->panierService->getTotalPanier();
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -166,6 +188,8 @@ class DashboardController extends AbstractController
         }
 
         return $this->render('dashboard/add_category.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
             'form' => $form->createView(),
         ]);
     }
@@ -177,6 +201,8 @@ class DashboardController extends AbstractController
     {
 
         $categories = $this->entityManager->getRepository(Category::class)->find($id);
+
+        $totalPanier = $this->panierService->getTotalPanier();
 
         $form = $this->createForm(CategoryType::class, $categories);
         $form->handleRequest($request);
@@ -191,6 +217,8 @@ class DashboardController extends AbstractController
 
 
         return $this->render('dashboard/edit_category.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
             'form' => $form->createView(),
         ]);
     }
