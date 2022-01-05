@@ -20,7 +20,7 @@
 
     .section-products .single-product {
         margin-bottom: 26px;
-        box-shadow: 1px 1px 12px #555;
+        box-shadow: 1px 1px 12px;
     }
 
     .section-products .single-product .part-1 {
@@ -29,7 +29,7 @@
         max-height: 290px;
         margin-bottom: 20px;
         overflow: hidden;
-        box-shadow: 0 8px 6px -6px black;
+        box-shadow: 0 8px 6px -6px;
     }
 
     .section-products .single-product .part-1::before {
@@ -89,7 +89,6 @@
         background-color: #ffffff;
         color: black;
         text-align: center;
-        box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
         transition: color 0.2s;
     }
 
@@ -153,12 +152,12 @@ left: 0;
                             <ul>
                                 <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                                <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                         </div>
-                        <div class="part-2">
-                            <h3 class="product-name">{{product.name}}</h3>
-                            <h4 class="product-price">{{product.price}}</h4>
+                        <div class="ms-3 me-3 part-2 d-block">
+                           <h3 class="product-title">{{product.name}}</h3>
+                           <h4 class="product-price">{{product.price}} €</h4>
                         </div>
                     </div>
                 </div>

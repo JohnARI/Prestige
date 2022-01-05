@@ -128,6 +128,7 @@ width: 100%;
 left: 0;
 }
 
+
 </style>
 
 <img src="assets/images/Header_toutes_les_montres.png" class="modal-fullscreen" alt="Header Toutes Les Montres">
@@ -153,12 +154,12 @@ left: 0;
                             <ul>
                                 <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                                <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                         </div>
-                        <div class="part-2">
-                            <h3 class="product-title">{{product.name}}</h3>
-                            <h4 class="product-price">{{product.price}}</h4>
+                        <div class="ms-3 me-3 part-2 d-block">
+                           <h3 class="product-title">{{product.name}}</h3>
+                           <h4 class="product-price">{{product.price}} €</h4>
                         </div>
                     </div>
                 </div>
