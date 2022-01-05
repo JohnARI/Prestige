@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+
+
 class HomeController extends AbstractController
 {
 
@@ -58,7 +61,6 @@ class HomeController extends AbstractController
 
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
 
-        
         
 
         return $this->render("montres/montres_hommes.html.twig",[
@@ -108,21 +110,39 @@ class HomeController extends AbstractController
 
         $panierService->add($id);
 
-        $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
+        
+
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
 
         ($panierService->getFullCart());
 
-        $route = $_GET;
+        $montres = $this->panierService->getMontres()->getCategory();
 
-        dd($route);
+        $toutesMontres = $this->panierService->getMontres();
+        
+        
+        //dd($montres);
 
-        if ($route != 'home' ):
+        if ($route == 'home'&& $montres == "homme")
+        {
             $this->addFlash('success', 'montre ajouté au panier');
             return $this->redirectToRoute('montres_hommes');
-        else:
+        }
+
+        elseif ($route == 'home'&& $montres == "femme")
+        {
+            $this->addFlash('success', 'montre ajouté au panier');
+            return $this->redirectToRoute('montres_femmes');
+
+        }
+
+
+        else
+        {
             $this->addFlash('success', 'montre ajouté au panier');
             return $this->redirectToRoute('fullCart');
-        endif;
+        };
+        
 
     }
     
