@@ -96,7 +96,7 @@ class HomeController extends AbstractController
         
 
     /**
-     * @Route("/addCart/{id}/{route}", name="addCart")
+     * @Route("/addCart/{id}/{route}/$_GET", name="addCart")
      *
      */
     public function addCart($id, PanierService $panierService, $route)
@@ -107,9 +107,11 @@ class HomeController extends AbstractController
 
         ($panierService->getFullCart());
 
-        if ($route == 'home'):
+        $route = $_GET;
+
+        if ($route == 'montreshommes'):
             $this->addFlash('success', 'montre ajouté au panier');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('montres_hommes');
         else:
             $this->addFlash('success', 'montre ajouté au panier');
             return $this->redirectToRoute('fullCart');
