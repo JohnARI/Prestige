@@ -111,7 +111,7 @@ class HomeController extends AbstractController
 
         $route = $_GET;
 
-        dd($route);
+        // dd($route);
 
         if ($route != 'home' ):
             $this->addFlash('success', 'montre ajouté au panier');
