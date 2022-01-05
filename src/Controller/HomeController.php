@@ -36,13 +36,10 @@ class HomeController extends AbstractController
 
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
-        $produitBestSeller = $this->repoProduit->findBybestseller(1);
-
 
         return $this->render('home/home.html.twig',[
 
             'products'=> $products,
-            'productBestSeller'=>$produitBestSeller,
             'TotalPanier'=>$totalPanier
         ]);
     }

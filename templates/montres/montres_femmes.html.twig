@@ -155,9 +155,9 @@ left: 0;
                                 <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                         </div>
-                        <div class="ms-3 me-3 part-2 d-block">
-                           <h3 class="product-title">{{product.name}}</h3>
-                           <h4 class="product-price">{{product.price}} €</h4>
+                        <div class="part-2 ms-3 me-3">
+                            <h3 class="product-title">{{product.name | length > 25 ? product.name | slice(0, 25) ~ '...' : product.name }}</h3>
+                            <h4 class="product-price">{{product.price}} €</h4>
                         </div>
                     </div>
                 </div>
