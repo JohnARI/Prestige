@@ -37,7 +37,7 @@ class HomeController extends AbstractController
 
         $totalPanier =$this->panierService->getTotalPanier();
 
-        $products = $this->entityManager->getRepository(Product::class)->findAll();
+        $products = $this->entityManager->getRepository(Product::class)->findByBestseller(1);
 
 
         return $this->render('home/home.html.twig',[
