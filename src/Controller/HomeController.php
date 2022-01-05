@@ -47,6 +47,24 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route(" /marque", name="marque")
+     */
+
+    public function marque(): Response {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+    
+        return $this->render("/home/marque.html.twig",[
+
+            'products'=> $products,
+            'TotalPanier'=>$totalPanier
+            
+        ]);
+    } 
+
    /**
      * @Route("/montreshommes", name="montres_hommes")
      */
