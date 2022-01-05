@@ -141,12 +141,7 @@ class PanierService
         return $montres;
     }
 
-    public function getToutesMontres()
-    {
-
-            return $_GET ;
-    }
-
+    
     
 
 

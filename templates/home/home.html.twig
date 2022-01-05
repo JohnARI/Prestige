@@ -134,6 +134,22 @@ width: 100%;
 left: 0;
 }
 
+.section-shop{
+  padding-top: 100px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.image-boutique{
+    height: 800px;
+}
+
+.fs-3{
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    position: relative;
+}
+
 </style>
 
 <video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
@@ -150,7 +166,7 @@ left: 0;
             </div>  
 
 
-                {% for product in productBestSeller %}
+                {% for product in products %}
                 <div class="col-md-6 col-lg-4 col-xl-3">
                     <div id="product-1" class="single-product">
                         <div class="part-1 d-flex justify-content-center">
@@ -162,9 +178,9 @@ left: 0;
                                 <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                         </div>
-                        <div class="part-2">
-                            <h3 class="product-title">{{product.name}}</h3>
-                            <h4 class="product-price">{{product.price}}</h4>
+                        <div class="part-2 ms-3 me-3">
+                            <h3 class="product-title">{{product.name | length > 25 ? product.name | slice(0, 25) ~ '...' : product.name }}</h3>
+                            <h4 class="product-price">{{product.price}} €</h4>
                         </div>
                     </div>
                 </div>
@@ -183,17 +199,30 @@ left: 0;
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Carousel image 1">
+                <img src="assets/images/montres_homme/montre_cartier_homme2.webp" class="d-flex w-50" alt="Carousel image 1">
               </div>
               <div class="carousel-item">
-                <img src="assets/images/montres_homme/montre_cartier_homme2.webp" class="d-block w-100" alt="Carousel image 2">
+                <img src="assets/images/montres_homme/montre_omega_homme3.jpg" class="d-flex w-50" alt="Carousel image 2">
               </div>
               <div class="carousel-item">
-                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Carousel image 3">
+                <img src="assets/images/montres_homme/montre_rolex_homme2.webp" class="d-flex w-50" alt="Carousel image 3">
               </div>
+              <div class="carousel-item">
+                <img src="assets/images/montres_femme/montre_cartier_femme1.webp" class="d-flex w-50" alt="Carousel image 4">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/images/montres_femme/montre_omega_femme1.jpg" class="d-flex w-50" alt="Carousel image 5">
+              </div>
+              <div class="carousel-item">
+                <img src="assets/images/montres_femme/montre_rolex_femme1.webp" class="d-flex w-50" alt="Carousel image 6">
+              </div>
+
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -206,8 +235,29 @@ left: 0;
           </div>
           <!-- Fin carousel -->
 
- 
+
 </div> <!-- Fin container-->
+
+     <section class="section-shop container">
+
+        <div class="adresse row d-flex justify-content-evenly">
+            <h3 class= "fs-2 text-center" href=""> BOUTIQUE PRESTIGE </h3>
+
+            <p> Vous souhaitez nous rendre visite? Nous nous situons dans la ville de Paris, au 7 place Vendôme. Nous sommes impatients de vous accueillir aux horaires habituels au sein de notre boutique Prestige. </p>
+<br>
+<br>
+            <h3 class= "fs-2 text-center" href="">SERVICE D’ENTRETIEN</h3>
+            <p>Vous souhaitez faire réviser votre montre? Il vous suffit de la déposer dans notre boutique et nous en prendrons soin. </p>
+
+        </div>
+
+        <div class="image-boutique">
+                <img src="assets/images/PrestigeBoutique.png" class="modal-fullscreen w-75 p-3 float-end" alt="Boutique Prestige">
+        </div>
+            </section>
+        
+
+
 
 
 

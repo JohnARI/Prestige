@@ -39,16 +39,31 @@ class HomeController extends AbstractController
 
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
-        $produitBestSeller = $this->repoProduit->findBybestseller(1);
-
 
         return $this->render('home/home.html.twig',[
 
             'products'=> $products,
-            'productBestSeller'=>$produitBestSeller,
             'TotalPanier'=>$totalPanier
         ]);
     }
+
+    /**
+     * @Route(" /marque", name="marque")
+     */
+
+    public function marque(): Response {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+    
+        return $this->render("/home/marque.html.twig",[
+
+            'products'=> $products,
+            'TotalPanier'=>$totalPanier
+            
+        ]);
+    } 
 
    /**
      * @Route("/montreshommes", name="montres_hommes")
