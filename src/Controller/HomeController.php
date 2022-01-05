@@ -49,8 +49,15 @@ class HomeController extends AbstractController
      */
 
     public function marque(): Response {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
     
         return $this->render("/home/marque.html.twig",[
+
+            'products'=> $products,
+            'TotalPanier'=>$totalPanier
             
         ]);
     } 
