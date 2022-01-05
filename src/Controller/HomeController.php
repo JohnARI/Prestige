@@ -16,19 +16,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduit )
+    public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduit, PanierService $panierService )
     {
         $this->entityManager = $entityManager;
         $this->repoProduit = $repoProduit;
+        $this->panierService = $panierService;
     }
     /**
      * @Route("/", name="home")
      */
-    public function home(PanierService $panierService): Response
+    public function home(): Response
     {
         
 
-        $totalPanier =$panierService->getTotalPanier();
+        $totalPanier =$this->panierService->getTotalPanier();
 
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
@@ -46,11 +47,11 @@ class HomeController extends AbstractController
    /**
      * @Route("/montreshommes", name="montres_hommes")
      */
-    public function montresHommes(
-
-    ): Response {
+    public function montresHommes(): Response {
     
        
+
+        $totalPanier = $this->panierService->getTotalPanier();
 
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
 
@@ -58,6 +59,7 @@ class HomeController extends AbstractController
 
         return $this->render("montres/montres_hommes.html.twig",[
             'products' => $products,
+            'TotalPanier'=>$totalPanier
             
         ]);
     }   
@@ -66,12 +68,15 @@ class HomeController extends AbstractController
      * @Route("/montresfemmes", name="montres_femmes")
      */
     public function montresFemmes(): Response {
+
+        $totalPanier = $this->panierService->getTotalPanier();
     
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(2);
 
         
         return $this->render("montres/montres_femmes.html.twig",[
-            'products' => $products
+            'products' => $products,
+            'TotalPanier'=>$totalPanier
         ]);
     } 
 
@@ -79,10 +84,13 @@ class HomeController extends AbstractController
      * @Route("/toutes_les_montres", name="toutes_les_montres")
      */
     public function toutesMontres(): Response {
+
+        $totalPanier = $this->panierService->getTotalPanier();
     
         $products = $this->entityManager->getRepository(Product::class)->findAll();
         return $this->render("montres/toutes_les_montres.html.twig",[
-            'products' => $products
+            'products' => $products,
+            'TotalPanier'=>$totalPanier
         ]);
     } 
         
@@ -93,6 +101,8 @@ class HomeController extends AbstractController
      */
     public function addCart($id, PanierService $panierService, $route)
     {
+
+        
         $panierService->add($id);
 
         ($panierService->getFullCart());

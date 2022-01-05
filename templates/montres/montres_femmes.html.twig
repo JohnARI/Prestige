@@ -151,7 +151,7 @@ left: 0;
 
                             <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
                             <ul>
-                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i class="fas fa-shopping-cart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fas fa-expand"></i></a></li>
                             </ul>
