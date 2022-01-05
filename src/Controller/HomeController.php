@@ -155,7 +155,7 @@ class HomeController extends AbstractController
         else
         {
             $this->addFlash('success', 'montre ajouté au panier');
-            return $this->redirectToRoute('fullCart');
+            return $this->redirectToRoute('home');
         };
         
 
