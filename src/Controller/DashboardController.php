@@ -10,6 +10,7 @@ use App\Form\ProductType;
 use App\Form\CategoryType;
 use App\Form\EditUserType;
 use App\Form\RegisterType;
+use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,19 +21,28 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class DashboardController extends AbstractController
 {
 
-    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, PanierService $panierService)
     {
         $this->entityManager = $entityManager;
         $this->passwordHasher = $passwordHasher;
+        $this->panierService = $panierService;
     }
 
     /**
      * @Route("/admin/dashboard", name="dashboard")
      */
-    public function dashboard(): Response
-    {
+    public function dashboard(): Response{
 
-        return $this->render('dashboard/dashboard.html.twig', []);
+        $totalPanier = $this->panierService->getTotalPanier();
+    
+        $products = $this->entityManager->getRepository(Product::class)->findAll();
+    
+        return $this->render("dashboard/dashboard.html.twig",[
+
+            'products'=> $products,
+            'TotalPanier'=>$totalPanier
+
+        ]);
     }
 
     /**
