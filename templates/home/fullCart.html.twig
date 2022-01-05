@@ -151,7 +151,8 @@
 	<h1>Votre panier</h1>
 	<div class="container-fluid">
 		<div class="row align-items-start">
-			{% for item in fullCart %}<div class="col-12 col-sm-8 items">
+			{% for item in fullCart %}
+			<div class="col-12 col-sm-8 items">
 				<div class="cartItem row align-items-start">
 					<div class="col-3 mb-2">
 						<img class="w-100" src="{{ asset('uploads/' ~ item.product.picture)}}" alt="">
