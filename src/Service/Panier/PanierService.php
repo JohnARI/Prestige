@@ -121,6 +121,28 @@ class PanierService
     }
     
 
+    public function getMontres()
+    {
+        $panier =  $this->getFullCart();
+
+        
+
+        $montre = "";
+
+        foreach ($panier as $item => $value) :
+
+    
+
+            $montres = $value['product'];
+
+        endforeach;
+
+       
+        return $montres;
+    }
+
+    
+    
 
 
 
