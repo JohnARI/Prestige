@@ -10,6 +10,7 @@ use App\Repository\ProductRepository;
 use App\Service\Panier\PanierService;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,6 +28,16 @@ class HomeController extends AbstractController
         $this->entityManager = $entityManager;
         $this->repoProduit = $repoProduit;
         $this->panierService = $panierService;
+        
+    }
+
+
+    public function CurrentRoute(){
+
+        $currentRoute = $this->request->attributes->get('_route');
+
+        return $currentRoute;
+        
     }
     /**
      * @Route("/", name="home")
@@ -102,17 +113,28 @@ class HomeController extends AbstractController
     } 
 
     /**
-     * @Route("/toutes_les_montres", name="toutes_les_montres")
+     * @Route("/toutes_les_montres", name="toutes_les_montres", methods={"GET|POST"})
      */
-    public function toutesMontres(): Response {
+    public function toutesMontres( Request $request ): Response {
 
         $totalPanier = $this->panierService->getTotalPanier();
+
+        
+
+        
+
+       
     
         $products = $this->entityManager->getRepository(Product::class)->findAll();
         return $this->render("montres/toutes_les_montres.html.twig",[
             'products' => $products,
             'TotalPanier'=>$totalPanier
         ]);
+
+       
+
+
+        
     } 
         
 
