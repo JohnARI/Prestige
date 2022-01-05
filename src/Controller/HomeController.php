@@ -16,6 +16,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
+
+    
+
     public function __construct(EntityManagerInterface $entityManager, ProductRepository $repoProduit, PanierService $panierService )
     {
         $this->entityManager = $entityManager;
@@ -55,6 +58,7 @@ class HomeController extends AbstractController
 
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
 
+        
         
 
         return $this->render("montres/montres_hommes.html.twig",[
@@ -96,20 +100,23 @@ class HomeController extends AbstractController
         
 
     /**
-     * @Route("/addCart/{id}/{route}/$_GET", name="addCart")
+     * @Route("/addCart/{id}/{route}/", name="addCart")
      *
      */
     public function addCart($id, PanierService $panierService, $route)
     {
 
-        
         $panierService->add($id);
+
+        $products = $this->entityManager->getRepository(Product::class)->findByCategory(1);
 
         ($panierService->getFullCart());
 
         $route = $_GET;
 
-        if ($route == 'montreshommes'):
+        dd($route);
+
+        if ($route != 'home' ):
             $this->addFlash('success', 'montre ajouté au panier');
             return $this->redirectToRoute('montres_hommes');
         else:
