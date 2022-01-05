@@ -44,6 +44,17 @@ class HomeController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route(" /marque", name="marque")
+     */
+
+    public function marque(): Response {
+    
+        return $this->render("/home/marque.html.twig",[
+            
+        ]);
+    } 
+
    /**
      * @Route("/montreshommes", name="montres_hommes")
      */
