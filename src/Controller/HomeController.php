@@ -118,7 +118,7 @@ class HomeController extends AbstractController
 
         $montres = $this->panierService->getMontres()->getCategory();
 
-        $toutesMontres = $this->panierService->getMontres();
+      
         
         
         //dd($montres);
