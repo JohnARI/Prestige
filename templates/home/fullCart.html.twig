@@ -151,7 +151,8 @@
 	<h1>Votre panier</h1>
 	<div class="container-fluid">
 		<div class="row align-items-start">
-			{% for item in fullCart %}<div class="col-12 col-sm-8 items">
+			{% for item in fullCart %}
+			<div class="col-12 col-sm-8 items">
 				<div class="cartItem row align-items-start">
 					<div class="col-3 mb-2">
 						<img class="w-100" src="{{ asset('uploads/' ~ item.product.picture)}}" alt="">
@@ -173,7 +174,7 @@
 				<div class="d-flex">
 					<p id="cartItem1Price">Prix: {{ item.product.price }} €</p>
 					<a href="{{ path('deleteCart', {id:item.product.id }) }}"
-						onclick="return confirm('Etes-vous sûr de vouloir supprimer cette ligne ?')"
+						onclick="return confirm('Etes-vous sûr de vouloir supprimer cet article ?')"
 						class="btn btn-outline-danger col-2 ms-4">Supprimer</a>
 				</div>
 				<hr>

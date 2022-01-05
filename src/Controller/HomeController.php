@@ -133,6 +133,9 @@ class HomeController extends AbstractController
 
         $montres = $this->panierService->getMontres()->getCategory();
 
+      
+        
+        
         //dd($montres);
 
         if ($route == 'home'&& $montres == "homme")
@@ -152,7 +155,7 @@ class HomeController extends AbstractController
         else
         {
             $this->addFlash('success', 'montre ajouté au panier');
-            return $this->redirectToRoute('fullCart');
+            return $this->redirectToRoute('home');
         };
         
 
