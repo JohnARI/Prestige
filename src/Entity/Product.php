@@ -57,9 +57,15 @@ class Product
      */
     private $carts;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="product")
+     */
+    private $orders;
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
     
 
@@ -168,6 +174,36 @@ class Product
             // set the owning side to null (unless already changed)
             if ($cart->getProduct() === $this) {
                 $cart->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getProduct() === $this) {
+                $order->setProduct(null);
             }
         }
 

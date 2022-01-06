@@ -35,6 +35,11 @@ class Order
      */
     private $carts;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="orders")
+     */
+    private $product;
+
 
 
     public function __construct()
@@ -97,6 +102,18 @@ class Order
                 $cart->setOrders(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }
