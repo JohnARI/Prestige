@@ -2,122 +2,125 @@
   @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
   @import url('http://fonts.cdnfonts.com/css/gotham');
 
-.nav-link {
-  color: white;
-  text-transform: uppercase;
-  position: relative;
-    
-}
+  .nav-link {
+    color: white;
+    text-transform: uppercase;
+    position: relative;
 
-nav {
-  transition: 0.7s ease;
-  font-family: 'Gotham', sans-serif;
-}
+  }
 
-.navbar {
-  border-bottom: 1px rgba(255, 255,255,0.3) solid;
-}
+  nav {
+    transition: 0.7s ease;
+    font-family: 'Gotham', sans-serif;
+  }
 
-.nav-link:after {
+  .navbar {
+    border-bottom: 1px rgba(255, 255, 255, 0.3) solid;
+  }
 
-  bottom: 0;
-  content: "";
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: white;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
-}
+  .nav-link:after {
 
-a:hover:after {
-  width: 100%;
-  left: 0;
-}
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: white;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
 
+  a:hover:after {
+    width: 100%;
+    left: 0;
+  }
 </style>
-  <nav class="navbar fixed-top navbar-expand-lg navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="col-md-3 d-flex justify-content-center">
+    <div class="navResponsive col-md-3 d-flex justify-content-center">
 
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{{path('marque')}}">La marque</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" data-bs-toggle="dropdown">Les montres</a>
-             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{{path('marque')}}">La marque</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Les montres
+
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{path('montres_hommes')}}">Montres hommes</a></li>
             <li><a class="dropdown-item" href="{{path('montres_femmes')}}">Montres femmes</a></li>
             <li><a class="dropdown-item" href="{{path('toutes_les_montres')}}">Toutes les montres</a></li>
           </ul>
-          </li>
-        </ul> 
+        </li>
+      </ul>
 
-       </div>
-
-      <div class="collapse navbar-collapse d-flex justify-content-center col-md-6" id="navbarNav">
-       
-        <ul class="navbar-nav">
-          <a class="navbar-brand" href="{{path('home')}}"><img class="navLogo" src="https://127.0.0.1:8000/assets/images/logo/prestige_blanc.png" alt="Logo"></a>
-        </ul>
-       
-      </div>
-
-      
-      <div class="col-md-3 d-flex justify-content-center align-items-center">
-
-        <div class="dropdown">
-          <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user text-white"></i>
-            
-          </a>  
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-             {% if not app.user %}
-            <li><a class="dropdown-item" href="{{path('register')}}">Inscription</a></li>
-            <li><a class="dropdown-item" href="{{path('app_login')}}">Connexion</a></li>
-            {% endif %}
-
-            {% if app.user and app.user.role == '[Admin]'%}
-            <li><a class="dropdown-item" href="{{path('dashboard')}}">Administrateur</a></li>
-
-            {% endif %}
-            
-
-
-            {% if app.user %}
-            <li><a class="dropdown-item" href="{{path('compte')}}">Mon compte</a></li>
-            <li><a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a></li> 
-             {% endif %} 
-
-
-          </ul>
-        </div>
-        <a type="button" href="{{ path('fullCart') }}"><i class="ms-2 fas fa-shopping-cart text-white"></i></a>
-        <span class="badge" style="color : white">{{ TotalPanier }}</span>
-      </div>
-    
     </div>
-    
-  </nav>
 
-  <script>
+    <div class="collapse navbar-collapse d-flex justify-content-center col-md-6" id="navbarNav">
 
+      <ul class="navbar-nav">
+        <a class="navbar-brand" href="{{path('home')}}"><img class="navLogo"
+            src="https://127.0.0.1:8000/assets/images/logo/prestige_blanc.png" alt="Logo"></a>
+      </ul>
 
-    let nav = document.querySelector('nav');
-
-    window.addEventListener('scroll', function () {
-      if (window.pageYOffset > 100) {
-        nav.classList.add('bg-black', 'shadow');
-
-      } else {
-        nav.classList.remove('bg-black', 'shadow');
+    </div>
 
 
-      }
-    });
+    <div class="col-md-3 d-flex justify-content-center align-items-center">
 
-  </script>
+      <div class="dropdown">
+        <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user text-white"></i>
+
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+          {% if not app.user %}
+          <li><a class="dropdown-item" href="{{path('register')}}">Inscription</a></li>
+          <li><a class="dropdown-item" href="{{path('app_login')}}">Connexion</a></li>
+          {% endif %}
+
+          {% if app.user and app.user.role == '[Admin]'%}
+          <li><a class="dropdown-item" href="{{path('dashboard')}}">Administrateur</a></li>
+
+          {% endif %}
+
+
+
+          {% if app.user %}
+          <li><a class="dropdown-item" href="{{path('compte')}}">Mon compte</a></li>
+          <li><a class="dropdown-item" href="{{path('app_logout')}}">Deconnexion</a></li>
+          {% endif %}
+
+
+        </ul>
+      </div>
+      <a type="button" href="{{ path('fullCart') }}"><i class="ms-2 fas fa-shopping-cart text-white"></i></a>
+      <span class="badge" style="color : white">{{ TotalPanier }}</span>
+    </div>
+
+  </div>
+
+</nav>
+
+<script>
+
+
+  let nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 100) {
+      nav.classList.add('bg-black', 'shadow');
+
+    } else {
+      nav.classList.remove('bg-black', 'shadow');
+
+
+    }
+  });
+
+</script>
