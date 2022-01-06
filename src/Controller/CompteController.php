@@ -40,4 +40,19 @@ class CompteController extends AbstractController
             'TotalPanier' => $totalPanier
         ]);
     }
+    /**
+     * @Route("/edit_adresse", name="edit_adress")
+     */
+    public function adresseDetail(): Response
+    {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
+
+        return $this->render('compte/compte_detail.html.twig', [
+
+            
+            'TotalPanier' => $totalPanier
+        ]);
+    }
 }
