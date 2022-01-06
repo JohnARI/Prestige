@@ -34,11 +34,14 @@ a:hover:after {
   width: 100%;
   left: 0;
 }
+
 </style>
   <nav class="navbar fixed-top navbar-expand-lg navbar">
 
     <div class="container">
+
       <div class="col-md-3 d-flex justify-content-center">
+
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link text-white" href="{{path('marque')}}">La marque</a>
@@ -52,19 +55,20 @@ a:hover:after {
           </ul>
           </li>
         </ul> 
+
        </div>
+
       <div class="collapse navbar-collapse d-flex justify-content-center col-md-6" id="navbarNav">
        
         <ul class="navbar-nav">
           <a class="navbar-brand" href="{{path('home')}}"><img class="navLogo" src="assets/images/logo/prestige_blanc.png" alt="Logo"></a>
-
         </ul>
        
-
       </div>
 
       
       <div class="col-md-3 d-flex justify-content-center align-items-center">
+
         <div class="dropdown">
           <a type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user text-white"></i>
@@ -95,18 +99,10 @@ a:hover:after {
         <a type="button" href="{{ path('fullCart') }}"><i class="ms-2 fas fa-shopping-cart text-white"></i></a>
         <span class="badge" style="color : white">{{ TotalPanier }}</span>
       </div>
-      
     
-
-     
-
-
     </div>
+    
   </nav>
-
-
-
-
 
   <script>
 
@@ -123,9 +119,5 @@ a:hover:after {
 
       }
     });
-
-    
-
-
 
   </script>

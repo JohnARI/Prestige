@@ -4,6 +4,11 @@
 
 {% block body %}
 <style>
+@import url('http://fonts.cdnfonts.com/css/gotham');
+
+body {
+    font-family: 'Gotham', sans-serif;
+}
     a,
     a:hover {
         text-decoration: none;
@@ -144,7 +149,7 @@ left: 0;
     height: 800px;
 }
 
-.fs-3{
+.fs-2{
     color: rgb(0, 0, 0);
     text-transform: uppercase;
     position: relative;
@@ -162,7 +167,7 @@ left: 0;
             
             <div class="row">
                 <div class="d-flex justify-content-center mt-5 mb-4">
-               <h2 class="fs-2" href="">BEST SELLERS</h2>
+               <h2 class="fs-2" href="">Best sellers</h2>
             </div>  
 
 
@@ -174,7 +179,6 @@ left: 0;
                             <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
                             <ul>
                                 <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-heart"></i></a></li>
                                 <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                         </div>
@@ -192,9 +196,15 @@ left: 0;
 
             </div> <!-- Fin row -->
         </section>
+        <div class="row">
+        <div class="d-flex justify-content-center mt-5 mb-4">
+            <h2 class="fs-2" href="">Nos produits favoris</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nulla, perferendis tempore magnam distinctio quos nisi mollitia est ipsa autem voluptates qui nemo, esse eum. Maxime ex ea numquam excepturi.</p>
+        </div>
 
         <!-- Carousel -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -202,13 +212,13 @@ left: 0;
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block w-100" alt="Image carousel 1">
+                <img src="assets/images/montres_homme/montre_cartier_homme1.webp" class="d-block mx-auto" alt="Image carousel 1">
               </div>
               <div class="carousel-item">
-                <img src="assets/images/montres_femme/montre_cartier_femme1.webp" class="d-block w-100" alt="Image carousel 2">
+                <img src="assets/images/montres_femme/montre_cartier_femme1.webp" style="height:550px; width:550px;" class="d-block mx-auto" alt="Image carousel 2">
               </div>
               <div class="carousel-item">
-                <img src="assets/images/montres_homme/montre_omega_homme3.jpg" class="d-block w-100" alt="Image carousel 3">
+                <img src="assets/images/montres_homme/montre_cartier_homme2.webp" class="d-block mx-auto" alt="Image carousel 3">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -228,12 +238,12 @@ left: 0;
      <section class="section-shop ms-4">
 
         <div class="adresse">
-            <h3 class= "fs-2 text-center" href=""> BOUTIQUE PRESTIGE </h3>
+            <h3 class= "fs-2 text-center"> BOUTIQUE PRESTIGE </h3>
 
             <p> Vous souhaitez nous rendre visite? Nous nous situons dans la ville de Paris, au 7 place Vendôme. Nous sommes impatients de vous accueillir aux horaires habituels au sein de notre boutique Prestige. </p>
 <br>
 <br>
-            <h3 class= "fs-2 text-center" href="">SERVICE D’ENTRETIEN</h3>
+            <h3 class= "fs-2 text-center">SERVICE D’ENTRETIEN</h3>
             <p>Vous souhaitez faire réviser votre montre? Il vous suffit de la déposer dans notre boutique et nous en prendrons soin. </p>
 
         </div>

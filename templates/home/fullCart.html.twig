@@ -2,6 +2,7 @@
 {% block title %}Panier{% endblock %} 
 {% block body %}
 <style>
+@import url('http://fonts.cdnfonts.com/css/gotham');
 	#cart {
 		max-width: 1440px;
 		padding-top: 60px;
@@ -34,6 +35,7 @@
 		color: #111111;
 		justify-content: center;
 		align-items: center;
+		font-family: 'Gotham', sans-serif;
 	}
 
 	a {
@@ -171,7 +173,7 @@
 					</div>
 
 				</div>
-				<div class="d-flex">
+				<div class="d-flex align-items-center">
 					<p id="cartItem1Price">Prix: {{ item.product.price }} €</p>
 					<a href="{{ path('deleteCart', {id:item.product.id }) }}"
 						onclick="return confirm('Etes-vous sûr de vouloir supprimer cet article ?')"
@@ -216,9 +218,12 @@
 					</div>
 				</div>
 				{% endif %}
-				{% if app.user %}
+				{% if app.user and total is defined %}
 				<a href="{{ path('delivery') }}" type="button" class="btn btn-outline-success">Procéder au paiement</a>
 				{% else %}
+				<p>Votre panier est vide</p>
+				{% endif %}
+				{% if not app.user %}
 				<a href="{{ path('app_login') }}" type="button" class="btn btn-outline-secondary">Connectez-vous</a>
 				{% endif %}
 			</div>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
 
@@ -11,19 +11,23 @@
 				<div class="dashboard_menu">
 					<ul class="nav nav-tabs flex-column" role="tablist">
 						<li class="nav-item">
-							<a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false">
+							<a class="nav-link active" id="dashboard-tab" data-bs-toggle="dashboard" href="#dashboard"
+								role="tab" aria-controls="dashboard" aria-selected="false">
 								<i class="ti-layout-grid2"></i>Mon Compte</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">
+							<a class="nav-link" id="orders-tab" data-bs-toggle="collapse" href="#orders" role="button"
+								aria-controls="orders" aria-selected="false">
 								<i class="ti-shopping-cart-full"></i>Orders</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true">
+							<a class="nav-link" id="address-tab" data-bs-toggle="collapse" href="#address" role="button"
+								aria-controls="address" aria-selected="true">
 								<i class="ti-location-pin"></i>My Address</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" id="compte-detail-tab" data-toggle="tab" href="#compte-detail" role="tab" aria-controls="compte-detail" aria-selected="true">
+							<a class="nav-link" id="compte-detail-tab" data-bs-toggle="collapse" href="#compte-detail"
+								role="button" aria-controls="compte-detail" aria-selected="true">
 								<i class="ti-id-badge"></i>compte details</a>
 						</li>
 						<li class="nav-item">
@@ -35,28 +39,32 @@
 			</div>
 			<div class="col-lg-9 col-md-8">
 
-			
+
 
 
 				<div class="tab-content dashboard_content">
-					<div class=" active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+					<div role="tabpanel" aria-labelledby="dashboard-tab">
 						<div class="card">
 							<div class="card-header">
-								<h3>Bienvenue {{app.user.firstname | upper}} {{ app.user.lastname | upper}}</h3>
+								<h3>Bienvenue {{app.user.firstname}} {{ app.user.lastname | upper}}</h3>
 							</div>
-							<div class="card-body">
+							<div class="card-body" id="orders">
 
 								<p>From your compte dashboard. you can easily check &amp; view your
-									<a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent orders</a>, manage your
-									<a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping and billing addresses</a>
+									<a href="javascript:void(0);" onclick="$('#orders-tab').trigger('click')">recent
+										orders</a>, manage your
+									<a href="javascript:void(0);" onclick="$('#address-tab').trigger('click')">shipping
+										and billing addresses</a>
 									and
-									<a href="javascript:void(0);" onclick="$('#compte-detail-tab').trigger('click')">edit your password and compte details.</a>
+									<a href="javascript:void(0);"
+										onclick="$('#compte-detail-tab').trigger('click')">edit your password and compte
+										details.</a>
 								</p>
 							</div>
 						</div>
 					</div>
-					
-					<div class="" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+
+					<div class="collapse" id="orders" role="tabpanel" aria-labelledby="orders-tab">
 						<div class="card">
 							<div class="card-header">
 								<h3>Orders</h3>
@@ -98,7 +106,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="" id="address" role="tabpanel" aria-labelledby="address-tab">
+					<div class="collapse" id="address" role="tabpanel" aria-labelledby="address-tab">
 						<div class="row">
 							<div class="col-lg-12">
 								<a href="" class="btn btn-fill-out mb-3">Add new address</a>
@@ -153,29 +161,29 @@
 								<h3>compte Details</h3>
 							</div>
 							<div class="card-body">
-								<p>Already have an compte?
-									<a href="#">Log in instead!</a>
-								</p>
 								<form method="post" name="enq">
 									<div class="row">
 										<div class="form-group col-md-6">
 											<label>First Name
 												<span class="required">*</span>
 											</label>
-											<input required="" value="{{app.user.firstname}}" class="form-control" name="name" type="text">
+											<input required="" value="{{app.user.firstname}}" class="form-control"
+												name="name" type="text">
 										</div>
 										<div class="form-group col-md-6">
 											<label>Last Name
 												<span class="required">*</span>
 											</label>
-											<input required="" value="{{app.user.lastname}}" class="form-control" name="phone">
+											<input required="" value="{{app.user.lastname}}" class="form-control"
+												name="phone">
 										</div>
-										
+
 										<div class="form-group col-md-12">
 											<label>Email Address
 												<span class="required">*</span>
 											</label>
-											<input required="" value="{{app.user.email}}"class="form-control" name="email" type="email">
+											<input required="" value="{{app.user.email}}" class="form-control"
+												name="email" type="email">
 										</div>
 										<div class="form-group col-md-12">
 											<label>Current Password
@@ -196,7 +204,8 @@
 											<input required="" class="form-control" name="cpassword" type="password">
 										</div>
 										<div class="col-md-12">
-											<button type="submit" class="btn btn-fill-out" name="submit" value="Submit">Save</button>
+											<button type="submit" class="btn btn-fill-out" name="submit"
+												value="Submit">Save</button>
 										</div>
 									</div>
 								</form>
