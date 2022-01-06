@@ -16,7 +16,7 @@ class AdresseType extends AbstractType
             ->add('fullname')
             ->add('adresse')
             ->add('complementAdresse')
-            ->add('telehone')
+            ->add('telephone')
             ->add('ville')
             ->add('codePostale')
             ->add('pays', CountryType::class)

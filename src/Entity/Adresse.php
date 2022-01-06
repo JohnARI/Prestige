@@ -30,12 +30,12 @@ class Adresse
     /**
      * @ORM\Column(type="text")
      */
-    private $complementAdresse;
+    private $complement_adresse;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $telehone;
+    private $telephone;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -88,24 +88,24 @@ class Adresse
 
     public function getComplementAdresse(): ?string
     {
-        return $this->complementAdresse;
+        return $this->complement_adresse;
     }
 
-    public function setComplementAdresse(string $complementAdresse): self
+    public function setComplementAdresse(string $complement_adresse): self
     {
-        $this->complementAdresse = $complementAdresse;
+        $this->complement_adresse = $complement_adresse;
 
         return $this;
     }
 
-    public function getTelehone(): ?int
+    public function getTelephone(): ?int
     {
-        return $this->telehone;
+        return $this->telephone;
     }
 
-    public function setTelehone(int $telehone): self
+    public function setTelephone(int $telephone): self
     {
-        $this->telehone = $telehone;
+        $this->telephone = $telephone;
 
         return $this;
     }
