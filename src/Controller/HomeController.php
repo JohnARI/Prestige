@@ -236,10 +236,13 @@ class HomeController extends AbstractController
     /**
      * @Route("/delivery", name="delivery")
      */
-    public function delivery()
+    public function delivery(PanierService $panierService)
     {
-        
-        return $this->render('home/delivery.html.twig');
+        $totalPanier =$this->panierService->getTotalPanier();
+        return $this->render('home/delivery.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
+        ]);
     }
     
 
