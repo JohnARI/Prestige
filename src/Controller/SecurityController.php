@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
+use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,11 +16,23 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class SecurityController extends AbstractController
 {
+
+    public function __construct( PanierService $panierService )
+    {
+        
+        $this->panierService = $panierService;
+        
+    }
+
+
+
+
     /**
      * @Route("/login", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, PanierService $panierService): Response
     {
+    
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
         // }
@@ -58,7 +71,7 @@ class SecurityController extends AbstractController
 
             $email = (new TemplatedEmail())
                 ->from('$from')
-                ->to('$paul.gaultier76@yahoo.com')//l'adresse mail du projet ici
+                ->to('$prestiige.contact@gmail.com')//l'adresse mail du projet ici
                 ->subject($motif)
                 ->text('Sending emails is fun again!')
                 ->htmlTemplate('security/template_email.html.twig');
@@ -95,8 +108,12 @@ class SecurityController extends AbstractController
      */
     public function resetPassword()
     {
+        $totalPanier =$this->panierService->getTotalPanier();
 
-        return $this->render('security/resetPassword.html.twig');
+        return $this->render('security/resetPassword.html.twig',[
+
+            'TotalPanier'=>$totalPanier
+        ]);
     }
 
     /**
@@ -106,7 +123,7 @@ class SecurityController extends AbstractController
     {
         $user = $repository->findOneBy(['email' => $request->request->get('email')]);
 
-        
+        $totalPanier ="";
 
         if ($user):
 
@@ -149,7 +166,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('resetPassword');
         endif;
 
-
+        $totalPanier;
     }
 
 
@@ -158,13 +175,15 @@ class SecurityController extends AbstractController
      */
     public function resetForm(UserRepository $repository)
     {
+        $totalPanier =$this->panierService->getTotalPanier();
 
         if (isset($_GET['token'])):
             $user = $repository->findOneBy(['id' => $_GET['i'], 'token' => $_GET['token']]);
             if ($user):
 
                 return $this->render('security/resetForm.html.twig', [
-                    'id' => $user->getId()
+                    'id' => $user->getId(),
+                    'TotalPanier'=>$totalPanier
                 ]);
 
             else:
@@ -176,7 +195,7 @@ class SecurityController extends AbstractController
 
         endif;
 
-
+        $totalPanier;
 
     }
 
@@ -185,6 +204,9 @@ class SecurityController extends AbstractController
      */
     public function finalReset(UserRepository $repository, EntityManagerInterface $manager, Request $request, UserPasswordHasherInterface $hasher)
     {
+
+        $totalPanier =$this->panierService->getTotalPanier();
+
         $user = $repository->find($request->request->get('id'));// request va recupérer toute les donnée en POST 
         if ($request->request->get('password') == $request->request->get('confirm_password')):
 
@@ -201,7 +223,8 @@ class SecurityController extends AbstractController
         else:
             $this->addFlash('danger', 'Les mots de passe ne correspondent pas');
             return $this->render('security/resetForm.html.twig', [
-                'id' => $user->getId()
+                'id' => $user->getId(),
+                'TotalPanier'=>$totalPanier
             ]);
         endif;
 

@@ -105,9 +105,9 @@
 							</div>
 						</div>
 						<div class="row">
+							{% if app.user.adresses %}
 
-
-							<div class="col-lg-6">
+									<div class="col-lg-6">
 								<div class="card mb-3 mb-lg-0">
 									<div class="card-header">
 										<h3>
@@ -140,6 +140,13 @@
 
 						</div>
 					</div>
+
+							{% else %}
+
+								<p>Desolé vous n'avez pas d'adresse</p>
+							{% endif %}
+
+						
 					<div class="" id="compte-detail" role="tabpanel" aria-labelledby="compte-detail-tab">
 						<div class="card">
 							<div class="card-header">
