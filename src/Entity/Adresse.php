@@ -28,7 +28,7 @@ class Adresse
     private $adresse;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $complement_adresse;
 
