@@ -1,6 +1,6 @@
-{% include 'base.html.twig' %}
+{% extends 'base.html.twig' %}
 
-<title>{% block title %}Dashboard{% endblock %}</title>
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
 
@@ -9,16 +9,21 @@
     body {
         background-color: grey;
     }
+
+    h2 {
+        padding-top: 100px;
+    }
+
 </style>
 
+<div class="container">
 <h2 class="text-center">Administrateur</h2>
     <div class="text-center">
-    <div>
         <a href="{{path('showUser')}}" class="btn btn-outline-dark btn-lg">Gestion des membres</a>
         <a href="{{path('showProduct')}}" class="btn btn-outline-dark btn-lg">Gestion des produits</a>
         <a href="{{path('showCategory')}}" class="btn btn-outline-dark btn-lg">Gestion des catégories</a> 
 
     </div>
-
+</div>
 
 {% endblock %}
