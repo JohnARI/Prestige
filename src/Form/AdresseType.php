@@ -6,6 +6,7 @@ use App\Entity\Adresse;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 
 class AdresseType extends AbstractType
@@ -15,7 +16,10 @@ class AdresseType extends AbstractType
         $builder
             ->add('fullname')
             ->add('adresse')
-            ->add('complementAdresse')
+            ->add('complement_adresse', TextType::class, [
+                'required' => false,
+                
+            ])
             ->add('telephone')
             ->add('ville')
             ->add('codePostale')
