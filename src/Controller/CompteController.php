@@ -9,6 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * @Route("/compte")
+ */
+
 class CompteController extends AbstractController
 {
 
@@ -19,21 +23,21 @@ class CompteController extends AbstractController
         $this->panierService = $panierService;
     }
 
-    
+
 
     /**
-     * @Route("/compte", name="compte")
+     * @Route("/", name="compte")
      */
     public function monCompte(): Response
     {
 
-        $totalPanier =$this->panierService->getTotalPanier();
+        $totalPanier = $this->panierService->getTotalPanier();
 
 
         return $this->render('compte/compte.html.twig', [
 
-            'controller_name' => 'CompteController',
-            'TotalPanier'=>$totalPanier
+            
+            'TotalPanier' => $totalPanier
         ]);
     }
 }
