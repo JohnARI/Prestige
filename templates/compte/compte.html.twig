@@ -36,6 +36,15 @@
 				</div>
 				<div class="col-lg-9 col-md-8">
 
+					{% for message in app.flashes('adresse_message')%}
+
+					<div class="alert alert-success alert-dismissible fade show" role="alert"> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                    </div>
+
+					{% endfor %}
 
 					<div class="tab-content dashboard_content">
 						<div role="tabpanel" aria-labelledby="dashboard-tab">
@@ -105,8 +114,11 @@
 						<div class="collapse" id="address" role="tabpanel" aria-labelledby="address-tab">
 
 							{% if app.user.adresses %}
-								{% for adresse in app.user.adresses %}
 
+								{% set index = 0 %}
+
+								{% for adresse in app.user.adresses %}
+										{% set index = index +1 %}
 									<div class="row">
 										<div class="col-lg-12">
 											<a href="{{path('adresse_new', {'id' : adresse.id})}}" class="btn btn-fill-out mb-3">Ajouter une nouvelle adresse</a>
@@ -117,7 +129,7 @@
 											<div class="card mb-3 mb-lg-0">
 												<div class="card-header">
 													<h3>
-														Vos Adresses
+														Adresse {{ index }}
 													</h3>
 												</div>
 												<div class="card-body">
