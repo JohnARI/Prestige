@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\User;
+use App\Entity\Order;
 use App\Entity\Adresse;
 use App\Form\PaiementType;
 use App\Service\Panier\PanierService;
@@ -32,6 +34,8 @@ class PaiementController extends AbstractController
     }
 
 
+
+ 
 
     /**
      * @Route("/", name="paiement")
@@ -68,6 +72,43 @@ class PaiementController extends AbstractController
             'TotalPanier' => $totalPanier
         ]);
     }
+
+       /**
+     *
+     * @Route("/order", name="commander")
+     *
+     */
+
+    public function order(EntityManagerInterface $manager)
+    {
+
+            $order = new Order();
+            $order->setDate(new \DateTime())->setUser($this->getUser());
+            $panier = $this->panierService->getFullCart();
+            
+//            $delivery=new Delivery();
+//            
+//            $delivery->setOrder($order)->setStreet($request->request->get('street'));
+//                
+//                $manager->persist($delivery);
+
+            foreach ($panier as $item):
+
+                $cart = new Cart();
+                $cart->setOrders($order)->setProduct($item['product'])->setQuantity($item['quantity']);
+                $manager->persist($cart);
+                
+            endforeach;
+            $manager->persist($order);
+            $manager->flush();
+            $this->addFlash('success', "Nous allons passer au paiement");
+            return $this->redirectToRoute('paiement_confirm');
+
+
+
+
+    }
+   
 
     /**
      * @Route("/confirm", name="paiement_confirm")
@@ -108,15 +149,19 @@ class PaiementController extends AbstractController
                 $this->session->set('checkout_data', $data);
             }
 
+            
 
-
-
+            $cart = $this->entityManager->getRepository(Cart::class)->findAll();
             $adresses = $form->get('adresses')->getdata();
             $transporteur =  $form->get('Transporteur')->getdata();
             $information =  $form->get('informations')->getdata();
 
+
+            // dd($cart);
+
             return $this->render('paiement/confirmation.html.twig', [
-                'panier' => $panier,
+                'cart' => $cart,
+                'panier'=>$panier,
                 'adresse' => $adresses,
                 'transporteur' => $transporteur,
                 'informations' => $information,
@@ -125,6 +170,7 @@ class PaiementController extends AbstractController
             ]);
         }
 
+        
         $adresses = $form->get('adresses')->getdata();
         $transporteur =  $form->get('Transporteur')->getdata();
         $information =  $form->get('informations')->getdata();
@@ -138,6 +184,9 @@ class PaiementController extends AbstractController
             'TotalPanier' => $totalPanier,
             'paiement' => $form->createView()
         ]);
+
+
+        
     }
 
     /**
