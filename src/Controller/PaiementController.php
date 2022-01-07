@@ -119,6 +119,7 @@ class PaiementController extends AbstractController
         $adresse = new Adresse;
         $user = $this->getUser();
         $panier = $this->PanierServices->getFullCart();
+        $total = $this->PanierServices->getTotal();
         $totalPanier = $this->panierService->getTotalPanier();
 
 
@@ -170,6 +171,7 @@ class PaiementController extends AbstractController
             ]);
         }
 
+        // dd($total);
         
         $adresses = $form->get('adresses')->getdata();
         $transporteur =  $form->get('Transporteur')->getdata();
@@ -182,6 +184,7 @@ class PaiementController extends AbstractController
             'transporteur' => $transporteur,
             'informations' => $information,
             'TotalPanier' => $totalPanier,
+            'Total'=>$total,
             'paiement' => $form->createView()
         ]);
 
