@@ -102,8 +102,7 @@ class Transporteur
 
     public function __toString()
     {
-        $result = $this->name."[spr]";
-        $result .= $this->description."[spr]";
+        $result = $this->name;
         
 
         return $result;
