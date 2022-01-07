@@ -28,12 +28,12 @@
     <body>
         {% include 'components/header.html.twig' %}
 		{% for message in app.flashes('success') %}
-        <div class="alert alert-success text-center">
+        <div class="alert alert-success text-center position-absolute">
             {{ message }}
         </div>
     {% endfor %}
     {% for message in app.flashes('danger') %}
-        <div class="alert alert-danger text-center">
+        <div class="alert alert-danger text-center position-absolute">
             {{ message }}
         </div>
     {% endfor %}
