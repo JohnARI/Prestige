@@ -155,9 +155,13 @@
         text-transform: uppercase;
         position: relative;
     }
+
+    .fade-in {
+        opacity: 0;
+    }
 </style>
 
-<video class="modal-fullscreen" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
+<video class="modal-fullscreen fade-in" autoplay muted src="assets/images/watch_cover.mp4" type="video/mp4" loop=""
     preload="auto"></video>
 
 
@@ -167,12 +171,12 @@
 
         <div class="row">
             <div class="d-flex justify-content-center mt-5 mb-4">
-                <h2 class="fs-2" href="">Best sellers</h2>
+                <h2 class="fs-2 fade-in" href="">Best sellers</h2>
             </div>
 
 
             {% for product in products %}
-            <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="col-md-6 col-lg-4 col-xl-3 fade-in">
                 <div id="product-1" class="single-product">
                     <div class="part-1 d-flex justify-content-center">
 
@@ -201,14 +205,15 @@
     </section>
     <div class="row">
         <div class="d-flex justify-content-center mt-5 mb-4">
-            <h2 class="fs-2" href="">Nos produits favoris</h2>
+            <h2 class="fs-2 fade-in" href="">Nos produits favoris</h2>
         </div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nulla, perferendis tempore magnam distinctio
+        <p class="fade-in">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos nulla, perferendis tempore
+            magnam distinctio
             quos nisi mollitia est ipsa autem voluptates qui nemo, esse eum. Maxime ex ea numquam excepturi.</p>
     </div>
 
     <!-- Carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-dark fade-in" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -250,18 +255,18 @@
 <section class="section-shop ms-4">
 
     <div class="adresse">
-        <div class="d-flex justify-content-center mt-5 mb-4">
+        <div class="d-flex justify-content-center mt-5 mb-4 fade-in">
             <h3 class="fs-2"> BOUTIQUE PRESTIGE </h3>
         </div>
 
-        <p> Vous souhaitez nous rendre visite? Nous nous situons dans la ville de Paris, au 7 place Vendôme. Nous sommes
+        <p class="fade-in"> Vous souhaitez nous rendre visite? Nous nous situons dans la ville de Paris, au 7 place Vendôme. Nous sommes
             impatients de vous accueillir aux horaires habituels au sein de notre boutique Prestige. </p>
         <br>
         <br>
-        <div class="d-flex justify-content-center mt-5 mb-4">
+        <div class="d-flex justify-content-center mt-5 mb-4 fade-in">
             <h3 class="fs-2">SERVICE D’ENTRETIEN</h3>
         </div>
-        <p>Vous souhaitez faire réviser votre montre? Il vous suffit de la déposer dans notre boutique et nous en
+        <p class="fade-in">Vous souhaitez faire réviser votre montre? Il vous suffit de la déposer dans notre boutique et nous en
             prendrons soin. </p>
 
     </div>
@@ -271,7 +276,31 @@
     </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 
+<script>
+    $(document).ready(function () {
+
+        $(window).scroll(function () {
+
+            $('.fade-in').each(function (i) {
+
+                var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                if (bottom_of_window > bottom_of_object) {
+
+                    $(this).animate({ 'opacity': '1' }, 1500);
+
+                }
+
+            });
+
+        });
+
+    });
+</script>
 
 
 
