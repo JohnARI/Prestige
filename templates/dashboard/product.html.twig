@@ -10,16 +10,16 @@
     }
 
     body {
-        background-color: darkgray;
+        background-color: black;
     }
 </style>
 <div class="container">
 
-    <h2 class="text-center">Mes produits</h2>
+    <h2 class="text-center text-white">Mes produits</h2>
     <a href="{{path('dashboard')}}">Retour</a>
-    <a href="{{path('add_product')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un produit</a>
+    <a href="{{path('add_product')}}" class="btn mb-2 mb-md-0 btn-outline-light btn-block">Ajouter un produit</a>
     <table class="table table-hover mt-2">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nom</th>
@@ -32,7 +32,7 @@
         </thead>
         <tbody>
             {% for product in products %}
-            <tr>
+            <tr class=" text-white">
                 <th>{{product.id}}</th>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
@@ -41,8 +41,8 @@
                 <td>{{product.price}} €</td>
                 
                 <td>
-                     <a href="{{path('edit_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
-                     <a href="{{path('delete_product',{'id': product.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
+                     <a href="{{path('edit_product',{'id': product.id})}}"><i style="color: white;" class="bi bi-pencil-square"></i></a> | 
+                     <a href="{{path('delete_product',{'id': product.id})}}"><i style="color: white;" class="bi bi-trash"></i></a> 
                 </td>
 
             </tr>

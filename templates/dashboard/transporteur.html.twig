@@ -10,31 +10,32 @@
     }
 
     body {
-        background-color: darkgray;
+        background-color: black;
     }
 </style>
 <div class="container">
 
-    <h2 class="text-center">Mes transporteurs</h2>
+    <h2 class="text-center text-white">Mes transporteurs</h2>
     <a href="{{path('dashboard')}}">Retour</a>
-    <a href="{{path('add_transporteur')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un Transporteur</a>
+    <a href="{{path('add_transporteur')}}" class="btn mb-2 mb-md-0 btn-outline-light btn-block">Ajouter un Transporteur</a>
     <table class="table table-hover mt-2">
-        <thead class="table-dark">
+        <thead class="table-light">
             <tr>
                 
                 <th scope="col">Nom</th>
-                <th scope="col text-end">Description</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
             {% for transporteur in transporteurs %}
-            <tr>
+            <tr class="text-white">
                 <th>{{transporteur.name}}</th>
                 <td>{{transporteur.Description}}</td>
                 
                 <td>
-                     <a href="{{path('edit_transporteur',{'id': transporteur.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
-                     <a href="{{path('delete_transporteur',{'id': transporteur.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
+                     <a href="{{path('edit_transporteur',{'id': transporteur.id})}}"><i style="color: white;" class="bi bi-pencil-square"></i></a> | 
+                     <a href="{{path('delete_transporteur',{'id': transporteur.id})}}"><i style="color: white;" class="bi bi-trash"></i></a> 
                 </td>
 
             </tr>
