@@ -19,6 +19,7 @@ class PaiementType extends AbstractType
         $user =$options['user'];
         $builder
             ->add('adresses', EntityType::class,[
+                'label' => 'Adresse: ',
                 'class'=> Adresse::class,
                 'required'=>true, //oblige l'utitlisateur à choisir une adresse
                 'multiple' => false, // un seul choix
@@ -26,6 +27,7 @@ class PaiementType extends AbstractType
 
             ])
             ->add('Transporteur', EntityType::class,[
+                'label' => 'Transporteur: ',
                 'class'=> Transporteur::class,
                 'required'=>true, //oblige l'utitlisateur à choisir une livraison
                 'multiple' => false, // un seul choix
@@ -37,7 +39,7 @@ class PaiementType extends AbstractType
             ])
 
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary'],
+                'attr' => ['class' => 'btn btn-outline-light'],
             ])
         ;
     }

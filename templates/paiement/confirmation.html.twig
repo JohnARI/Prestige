@@ -4,96 +4,111 @@
 
 {% block body %}
 
-
+<style>
+    body {
+        background-color: black;
+        color: white;
+    }
+</style>
 
 <div class="section" style="margin-top:200px">
-	<div class="container">
 
-    {{form(paiement)}}
-        
-        <div class="row">
-        	<div class="col-md-6">
-                <div class="heading_s1">
-                        <h4>Vérifier votre adresse de livraison</h4>
-                        <div class="content" id="adresse">
-                            {{ adresse | replace({'[spr]' : "<br>"}) | raw}}
-                            {# <a href="{{path('adresse_edit',{'id':adresse.id})}}" class="btn btn-fill-out mt-1">modifier adresse</a> #}
-                            
+
+
+    <div class="container">
+
+
+
+                {{form(paiement)}}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="heading_s1">
+                            <h4>Vérifier votre adresse de livraison</h4>
+                            <div class="content" id="adresse">
+                                {{ adresse | replace({'[spr]' : "<br>"}) | raw}}
+                                {# <a href="{{path('adresse_edit',{'id':adresse.id})}}"
+                                    class="btn btn-fill-out mt-1">modifier adresse</a> #}
+
+                            </div>
+
+                            <a href="{{path('adresse_new')}}" class="btn btn-outline-light mt-1">Ajouter une nouvelle
+                                adresse</a>
+
                         </div>
 
-                        <a href="{{path('adresse_new')}}" class="btn btn-outline-dark mt-1">Ajouter une nouvelle adresse</a>
-                        
-                </div>
-                
-                <div class="heading_s1">
-                    <h4>Verifier votre transporteur</h4>
-                    <div class="content" id="transporteur">
-                        {{ transporteur | replace({'[spr]' : "<br>"}) | raw}}
-                        {# <a href="{{path('paiement_edit')}}" class="btn btn-fill-out mt-1">Changer transporteur</a> #}
+                        <div class="heading_s1">
+                            <h4>Verifier votre transporteur</h4>
+                            <div class="content" id="transporteur">
+                                {{ transporteur | replace({'[spr]' : "<br>"}) | raw}}
+                                {# <a href="{{path('paiement_edit')}}" class="btn btn-fill-out mt-1">Changer
+                                    transporteur</a> #}
 
-                    </div>
-                </div>
-                    {% if informations %}
+                            </div>
+                        </div>
+                        {% if informations %}
                         <div class="heading_s1">
                             <h4>Verifier vos informations supplémentaires</h4>
                             <div class="form-group mb-0" id="information">
                                 {{ informations | replace({'[spr]' : '<br>'}) | raw}}
                             </div>
                         </div>
-                    {% endif %}
-          </div>
-
-          <div class="col-md-6">
-                <div class="order_review">
-                    <div class="heading_s1">
-                        <h4>Votre Commande</h4>
+                        {% endif %}
                     </div>
-                    <div class="table-responsive order_table">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Produit</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for element in panier %}
-                            <tr>
-                                <td> {{element.product.name}}  <span class="product-qty">x {{element.quantity}}</span></td>
-                                <td>€ {{element.product.price}}</td>
-                            </tr>
-                            {% endfor %}
 
-                            </tbody>
-                            <tfoot>
-                                 {# <tr>
-                                    <th>Produit</th>
-                                    <td class="product-subtotal">${{ panier.order.subTotalHT}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Taxe</th>
-                                    <td class="product-subtotal">${{ panier.order.taxe}}</td>
-                                </tr>
-                                
-                                <tr> #} 
-                                    {# <th>Total</th>
-                                    <td class="product-subtotal">${{ panier.TotalTTC}}</td>
-                                </tr> #}
-                            </tfoot>
-                        </table>
-                    </div>
-                    {# <div class="payment_method"> #}
-                        {# <div class="heading_s1">
-                            <h4>Paiment</h4>
+                    <div class="col-md-6">
+                        <div class="order_review">
+                            <div class="heading_s1">
+                                <h4>Votre Commande</h4>
+                            </div>
+                            <div class="table-responsive order_table">
+                                <table class="table">
+                                    <thead class="text-white">
+                                        <tr>
+                                            <th>Produit</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-white">
+                                        {% for element in panier %}
+                                        <tr>
+                                            <td> {{element.product.name}} <span class="product-qty">x
+                                                    {{element.quantity}}</span></td>
+                                            <td>€ {{element.product.price}}</td>
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+                                    <tfoot class="text-white">
+                                        {# <tr>
+                                            <th>SubTotal HT</th>
+                                            <td class="product-subtotal">${{ panier.order.subTotalHT}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Taxe</th>
+                                            <td class="product-subtotal">${{ panier.order.taxe}}</td>
+                                        </tr>
+
+                                        <tr> #}
+                                            {# <th>Total</th>
+                                            <td class="product-subtotal">${{ panier.TotalTTC}}</td>
+                                        </tr> #}
+                                    </tfoot>
+                                </table>
+                            </div>
+                            {# <div class="payment_method"> #}
+                                {# <div class="heading_s1">
+                                    <h4>Paiment</h4>
+                                </div>
+                                <button type="submit" id="paiement-button" class="btn btn-fill-out btn-block">Paid | ${{
+                                    panier.data.subTotalTTC}}</button>
+                            </div> #}
+
                         </div>
-                        <button type="submit" id="paiement-button" class="btn btn-fill-out btn-block">Paid | ${{ panier.data.subTotalTTC}}</button>
-                    </div> #}
-                    
+                    </div>
+
                 </div>
-          </div>
-         
-        </div>
-    </div>
+            </div> {# Fin container #}
 </div>
 
 {% endblock %}
