@@ -77,7 +77,7 @@ class ProductType extends AbstractType
             ])
 
             ->add('bestseller', CheckboxType::class, [
-                'label'    => 'Is best Seller',
+                'label'    => 'Best Seller',
                 'required' => false,
             ])
 

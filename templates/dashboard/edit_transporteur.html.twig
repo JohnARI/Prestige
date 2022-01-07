@@ -3,12 +3,23 @@
 {% block title %}Modifier Transporteur{% endblock %}
 
 {% block body %}
+<style>
+    .card{
+        margin-top: 200px;
+    }
+    body {
+        background-color: black;
+    }
+</style>
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
+
+    <div class="card">
+        <div class="card-body">
+      
             {{form(form)}}
+
         </div>
     </div>
 </div>
-
 {% endblock %}

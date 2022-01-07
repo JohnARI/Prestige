@@ -16,19 +16,19 @@
                 <div class="heading_s1">
                         <h4>Vérifier votre adresse de livraison</h4>
                         <div class="content" id="adresse">
-                            {{ adresse | replace({'[spr]' : '<br>'}) | raw}}
+                            {{ adresse | replace({'[spr]' : "<br>"}) | raw}}
                             {# <a href="{{path('adresse_edit',{'id':adresse.id})}}" class="btn btn-fill-out mt-1">modifier adresse</a> #}
                             
                         </div>
 
-                        <a href="{{path('adresse_new')}}" class="btn btn-fill-out mt-1">Ajouter une nouvelle adresse</a>
+                        <a href="{{path('adresse_new')}}" class="btn btn-outline-dark mt-1">Ajouter une nouvelle adresse</a>
                         
                 </div>
                 
                 <div class="heading_s1">
                     <h4>Verifier votre transporteur</h4>
                     <div class="content" id="transporteur">
-                        {{ transporteur | replace({'[spr]' : '<br>'}) | raw}}
+                        {{ transporteur | replace({'[spr]' : "<br>"}) | raw}}
                         {# <a href="{{path('paiement_edit')}}" class="btn btn-fill-out mt-1">Changer transporteur</a> #}
 
                     </div>
