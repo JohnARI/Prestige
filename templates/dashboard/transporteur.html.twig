@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les catégories{% endblock %}
+
+{% block body %}
+
+<style>
+    h2 {
+        padding-top: 100px;
+    }
+
+    body {
+        background-color: darkgray;
+    }
+</style>
+<div class="container">
+
+    <h2 class="text-center">Mes transporteurs</h2>
+    <a href="{{path('dashboard')}}">Retour</a>
+    <a href="{{path('add_transporteur')}}" class="btn mb-2 mb-md-0 btn-outline-secondary btn-block">Ajouter un Transporteur</a>
+    <table class="table table-hover mt-2">
+        <thead class="table-dark">
+            <tr>
+                
+                <th scope="col">Nom</th>
+                <th scope="col text-end">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transporteur in transporteurs %}
+            <tr>
+                <th>{{transporteur.name}}</th>
+                <td>{{transporteur.Description}}</td>
+                
+                <td>
+                     <a href="{{path('edit_transporteur',{'id': transporteur.id})}}"><i style="color: black;" class="bi bi-pencil-square"></i></a> | 
+                     <a href="{{path('delete_transporteur',{'id': transporteur.id})}}"><i style="color: black;" class="bi bi-trash"></i></a> 
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+    {% endblock %}

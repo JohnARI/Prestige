@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+<h1>Paiement</1>
+
+<div class="section">
+	<div class="container">
+        {{ form_start(paiement, {action: path('paiement_confirm')})}}
+        <div class="row">
+        	<div class="col-md-6">
+                <div class="heading_s1">
+                        <h4>Votre Adresse de Livraison</h4>
+                        <div class="content">
+                            {{ form_widget(paiement.adresse) | replace({'[spr]' : '<br>'}) | raw}}
+                        </div>
+                        <a href="{{path('adresse_new')}}" class="btn btn-fill-out mb-3">Ajouter nouvelle adresse</a>
+                </div>
+                <div class="heading_s1">
+                    <h4>Votre transporteur</h4>
+                    <div class="content">
+                        {{ form_widget(paiement.transporteur) | replace({'[spr]' : '<br>'}) | raw}}
+
+                    </div>
+                </div>
+
+{% endblock %}

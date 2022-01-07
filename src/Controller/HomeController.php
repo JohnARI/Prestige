@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cart;
 use App\Entity\Order;
+use App\Entity\Adresse;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Repository\ProductRepository;
@@ -237,11 +238,17 @@ class HomeController extends AbstractController
      * @Route("/delivery", name="delivery")
      */
     public function delivery(PanierService $panierService)
-    {
+    {   
+        $adresse = new Adresse();
         $totalPanier =$this->panierService->getTotalPanier();
+
+        $user=$this->getUser();
+        $adresse->setUser($user);
+        
         return $this->render('home/delivery.html.twig', [
 
             'TotalPanier'=>$totalPanier,
+            'adresse'=>$adresse
         ]);
     }
     

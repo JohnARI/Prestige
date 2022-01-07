@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+
+
+<div class="section">
+	<div class="container">
+        
+        <div class="row">
+        	<div class="col-md-6">
+                <div class="heading_s1">
+                        <h4>Vérifier votre adresse de livraison</h4>
+                        <div class="content" id="adresse">
+                            {{ adresse | replace({'[spr]' : '<br>'}) | raw}}
+                            <a href="{{path('adresse_edit',{'id':adresse.id})}}" class="btn btn-fill-out mt-1">modifier adresse</a>
+                            <a href="{{path('paiement_edit')}}" class="btn btn-fill-out mt-1">Changer adresse</a>
+                        </div>
+                        
+                </div>
+                <div class="heading_s1">
+                    <h4>Verifier votre transporteur</h4>
+                    <div class="content" id="transporteur">
+                        {{ transporteur | replace({'[spr]' : '<br>'}) | raw}}
+                        <a href="{{path('paiement_edit')}}" class="btn btn-fill-out mt-1">Changer transporteur</a>
+
+                    </div>
+                </div>
+                    {% if informations %}
+                        <div class="heading_s1">
+                            <h4>Verifier vos informations supplémentaires</h4>
+                            <div class="form-group mb-0" id="information">
+                                {{ informations | replace({'[spr]' : '<br>'}) | raw}}
+                            </div>
+                        </div>
+                    {% endif %}
+          </div>
+
+          <div class="col-md-6">
+                <div class="order_review">
+                    <div class="heading_s1">
+                        <h4>Your Orders</h4>
+                    </div>
+                    <div class="table-responsive order_table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for element in cart.products %}
+                            <tr>
+                                <td> {{element.product.name}}  <span class="product-qty">x {{element.quantity}}</span></td>
+                                <td>$ {{element.product.price/100}}}}</td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>SubTotal HT</th>
+                                    <td class="product-subtotal">${{ cart.data.subTotalHT}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Taxe</th>
+                                    <td class="product-subtotal">${{ cart.data.taxe}}</td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>Total</th>
+                                    <td class="product-subtotal">${{ cart.data.subTotalTTC}}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="payment_method">
+                        <div class="heading_s1">
+                            <h4>Paiment</h4>
+                        </div>
+                        <button type="submit" id="paiement-button" class="btn btn-fill-out btn-block">Paid | ${{ cart.data.subTotalTTC}}</button>
+                    </div>
+                    
+                </div>
+          </div>
+         
+        </div>
+    </div>
+</div>
+
+{% endblock %}

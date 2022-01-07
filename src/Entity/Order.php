@@ -41,6 +41,12 @@ class Order
     private $product;
 
 
+    /**
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="orders")
+     */
+    private $orderDetails;
+
+
 
     public function __construct()
     {
@@ -118,4 +124,22 @@ class Order
         return $this;
     }
 
+
+    /**
+     * @return Collection|OrderDetails[]
+     */
+    public function getOrderDetails(): Collection
+    {
+        return $this->orderDetails;
+    }
+
+    public function addOrderDetail(OrderDetails $orderDetail): self
+    {
+        if (!$this->orderDetails->contains($orderDetail)) {
+            $this->orderDetails[] = $orderDetail;
+            $orderDetail->setOrders($this);
+        }
+
+        return $this;
+    }
 }

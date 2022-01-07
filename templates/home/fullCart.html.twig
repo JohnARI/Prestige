@@ -218,8 +218,8 @@
 					</div>
 				</div>
 				{% endif %}
-				{% if app.user and total is defined %}
-				<a href="{{ path('delivery') }}" type="button" class="btn btn-outline-success">Procéder au paiement</a>
+				{% if app.user and total != 0 %}
+				<a href="{{ path('paiement_confirm') }}" type="button" class="btn btn-outline-success">Procéder au paiement</a>
 				{% else %}
 				<p>Votre panier est vide</p>
 				{% endif %}

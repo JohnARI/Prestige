@@ -23,13 +23,14 @@
                 Looks good!
             </div>
         </div>
+
+        {% for adresse in app.user.adresses %}
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label">Nom de voie</label>
-            <input type="text" class="form-control" name="street" id="validationCustom03" required>
-            <div class="invalid-feedback">
-                Entrez un nom de voie valide.
-            </div>
+            <input type="text" class="form-control" name="street" id="validationCustom03" value="{{ adresse.adresse }}"required>
+           
         </div>
+        
 
         <div class="col-md-6">
             <label for="validationCustom03" class="form-label">Ville</label>
@@ -46,6 +47,7 @@
                 Entrez un code postal valide.
             </div>
         </div>
+        {% endfor %}
         
         <div class="col-12">
             <button class="btn btn-primary" type="submit">Valider</button>

@@ -4,12 +4,14 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use TransporteurType;
 use App\Entity\Product;
 use App\Entity\Category;
 use App\Form\ProductType;
 use App\Form\CategoryType;
 use App\Form\EditUserType;
 use App\Form\RegisterType;
+use App\Entity\Transporteur;
 use App\Service\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -239,4 +241,98 @@ class DashboardController extends AbstractController
 
         return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
     }
+
+
+     /**
+     * @Route("/admin/dashboard/transporteur", name="showTransporteur")
+     */
+    public function showTransporteur(): Response
+    {
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
+        $transporteurs = $this->entityManager->getRepository(transporteur::class)->findAll();
+
+        return $this->render('dashboard/transporteur.html.twig', [
+
+            'transporteurs' => $transporteurs,
+            'TotalPanier'=>$totalPanier,
+            
+        ]);
+    }
+
+    /**
+     * @Route("admin/add/transporteur", name="add_transporteur")
+     */
+    public function addTransporteur(Request $request): Response
+    {
+
+        $transporteurs = new Transporteur();
+        $form = $this->createForm(TransporteurType::class, $transporteurs);
+        $form->handleRequest($request);
+        $totalPanier = $this->panierService->getTotalPanier();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $transporteurs = $form->getData();
+            $this->entityManager->persist($transporteurs);
+            $this->entityManager->flush();
+            return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
+        }
+
+        return $this->render('dashboard/add_transporteur.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+     /**
+     * @Route("/admin/edit/transporteur/{id}", name="edit_transporteur")
+     */
+    public function editTransporteur($id, Request $request): Response
+    {
+
+        $transporteurs = $this->entityManager->getRepository(Transporteur::class)->find($id);
+
+        $totalPanier = $this->panierService->getTotalPanier();
+
+        $form = $this->createForm(TransporteurType::class, $transporteurs);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($transporteurs);
+            $this->entityManager->flush();
+            return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
+        }
+
+
+
+
+        return $this->render('dashboard/edit_transporteur.html.twig', [
+
+            'TotalPanier'=>$totalPanier,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/admin/delete/transporteur/{id}", name="delete_transporteur")
+     */
+    public function deleteTransporteur(Transporteur $transporteurs, Request $request): Response
+    {
+
+        $this->entityManager->remove($transporteurs);
+        $this->entityManager->flush();
+        $this->addFlash('success', 'Transporteur supprimé !');
+
+
+
+
+
+        return $this->redirect($request->get('redirect') ?? '/admin/dashboard');
+    }
+    
 }
