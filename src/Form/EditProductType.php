@@ -63,13 +63,13 @@ class EditProductType extends AbstractType
             ])
 
             ->add('bestseller', CheckboxType::class, [
-                'label'    => 'Is best Seller',
+                'label'    => 'Best Seller',
                 'required' => false,
             ])
 
             ->add('submit', SubmitType::class, [
                 'label' => 'Modifier',
-                'attr' => ['class' => 'btn btn-warning d-block mx-auto col-4 my-3']
+                'attr' => ['class' => 'btn btn-dark']
             ]);
     }
 

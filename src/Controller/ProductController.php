@@ -41,10 +41,11 @@ class ProductController extends AbstractController
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
+        $totalPanier = $this->panierService->getTotalPanier();
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             $product = $form->getData();
 
             # Association de l'article au user : setOwner()
@@ -116,7 +117,9 @@ class ProductController extends AbstractController
         }
 
         return $this->render('dashboard/add_product.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'TotalPanier'=>$totalPanier,
+            
         ]);
     }
 

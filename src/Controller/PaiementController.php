@@ -81,7 +81,7 @@ class PaiementController extends AbstractController
         $totalPanier = $this->panierService->getTotalPanier();
 
 
-        $adressess = $this->entityManager->getRepository(Adresse::class)->findAll();
+        $adresses = $this->entityManager->getRepository(Adresse::class)->findAll();
 
         if (!empty($panier['product'])) {
             return $this->redirectToRoute("home");
