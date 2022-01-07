@@ -19,7 +19,7 @@ class TransporteurType extends AbstractType
             ])
     
             ->add('description', TextareaType::class, [
-                'label'    => 'Name',
+                'label'    => 'Description',
                 'required' => true,
                 
             ])
