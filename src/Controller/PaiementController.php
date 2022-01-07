@@ -150,6 +150,7 @@ class PaiementController extends AbstractController
                 $this->session->set('checkout_data', $data);
             }
 
+            $total = $this->PanierServices->getTotal();
             
 
             $cart = $this->entityManager->getRepository(Cart::class)->findAll();
@@ -167,6 +168,7 @@ class PaiementController extends AbstractController
                 'transporteur' => $transporteur,
                 'informations' => $information,
                 'TotalPanier' => $totalPanier,
+                'Total'=>$total,
                 'paiement' => $form->createView()
             ]);
         }
