@@ -19,9 +19,6 @@
 	}
 
 	body {
-		background-image: url("https://127.0.0.1:8000/assets/images/PrestigeBoutique.png");
-		background-repeat: no-repeat;
-		background-size: cover;
 		color: #687188;
 		font-family: 'Gotham', sans-serif;
 		font-size: 16px;
@@ -8588,7 +8585,7 @@
 	}
 </style>
 
-<div class="section min-vh-100" style="margin-top: 200px">
+<div class="section" style="margin-top: 200px">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-md-4">
@@ -8696,7 +8693,7 @@
 
 						</div>
 					</div>
-					<div class="collapse" id="address" role="tabpanel" aria-labelledby="address-tab">
+					
 
 						{% if app.user.adresses %}
 
@@ -8704,6 +8701,7 @@
 
 						{% for adresse in app.user.adresses %}
 						{% set index = index +1 %}
+						<div class="collapse" id="address" role="tabpanel" aria-labelledby="address-tab">
 						<div class="row">
 							<div class="col-lg-12 mt-2">
 								<a href="{{path('adresse_new', {'id' : adresse.id})}}"
@@ -8740,19 +8738,21 @@
 						</div>
 					</div>
 				</div>
+				{% endfor %}
+				{% else %}
+
+		<p>Desolé vous n'avez pas d'adresse</p>
+		{% endif %}
+
 
 
 			</div>
 		</div>
 
 
-		{% endfor %}
+		
 
-		{% else %}
-
-		<p>Desolé vous n'avez pas d'adresse</p>
-		{% endif %}
-
+		
 
 		<div class="collapse" id="compte-detail" role="tabpanel" aria-labelledby="compte-detail-tab">
 			<div class="card">
