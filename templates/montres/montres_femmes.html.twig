@@ -43,7 +43,7 @@
         transition: all 0.3s;
     }
 
-  
+
     .section-products .single-product .part-1 .new {
         position: absolute;
         top: 15px;
@@ -93,7 +93,7 @@
     }
 
     .section-products .single-product .part-1 ul li a:hover {
-    
+
         color: red;
     }
 
@@ -111,63 +111,98 @@
     }
 
     .fs-2 {
-  color: rgb(0, 0, 0);
-  text-transform: uppercase;
-  position: relative;
-}
+        color: rgb(0, 0, 0);
+        text-transform: uppercase;
+        position: relative;
+    }
 
-.fs-2:after {
+    .fs-2:after {
 
-bottom: 0;
-content: "";
-height: 2px;
-left: 50%;
-position: absolute;
-background: rgb(0, 0, 0);
-transition: width 0.3s ease 0s, left 0.3s ease 0s;
-width: 0;
-}
+        bottom: 0;
+        content: "";
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: rgb(0, 0, 0);
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+    }
 
-.fs-2:hover:after {
-width: 100%;
-left: 0;
-}
+    .fs-2:hover:after {
+        width: 100%;
+        left: 0;
+    }
 
+    .fade-in {
+        opacity: 0;
+    }
 </style>
 
 
 <img src="assets/images/Header_montres_femmes.png" class="modal-fullscreen" alt="Header Montres Femmes">
 
 
-    
-    <div class="container">
-        <section class="section-products"> 
+
+<div class="container">
+    <section class="section-products">
 
         <div class="row">
-                <div class="d-flex justify-content-center mt-5 mb-4">
-               <h2 class="fs-2" href="">MONTRES FEMMES</h2>
-            </div>  
+            <div class="d-flex justify-content-center mt-5 mb-4">
+                <h2 class="fs-2 fade-in" href="">MONTRES FEMMES</h2>
+            </div>
 
-                {% for product in products %}
+            {% for product in products %}
 
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div id="product-1" class="single-product">
-                        <div class="part-1 d-flex justify-content-center">
+            <div class="col-md-6 col-lg-4 col-xl-3 fade-in">
+                <div id="product-1" class="single-product">
+                    <div class="part-1 d-flex justify-content-center">
 
-                            <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
-                            <ul>
-                                <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i class="fas fa-shopping-cart"></i></a></li>
-                                <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i class="fas fa-expand"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="part-2 ms-3 me-3">
-                            <h3 class="product-title">{{product.name | length > 25 ? product.name | slice(0, 25) ~ '...' : product.name }}</h3>
-                            <h4 class="product-price">{{product.price}} €</h4>
-                        </div>
+                        <img class="h-100 w-95" src="{{ asset('uploads/' ~ product.picture)}}" alt="">
+                        <ul>
+                            <li><a href="{{ path('addCart', {id: product.id, route : 'home'}) }}"><i
+                                        class="fas fa-shopping-cart"></i></a></li>
+                            <li><a href="{{ path( 'show_product', {'id' : product.id} ) }}"><i
+                                        class="fas fa-expand"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="part-2 ms-3 me-3">
+                        <h3 class="product-title">{{product.name | length > 25 ? product.name | slice(0, 25) ~ '...' :
+                            product.name }}</h3>
+                        <h4 class="product-price">{{product.price}} €</h4>
                     </div>
                 </div>
-            
+            </div>
+
             {% endfor %}
-                
+        </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(window).scroll(function () {
+
+            $('.fade-in').each(function (i) {
+
+                var bottom_of_object = $(this).position().top + $(this).outerHeight();
+                var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                if (bottom_of_window > bottom_of_object) {
+
+                    $(this).animate({ 'opacity': '1' }, 1500);
+
+                }
+
+            });
+
+        });
+
+    });
+</script>
+
+
 
 {% endblock %}
