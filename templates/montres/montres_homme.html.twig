@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Montres Femme{% endblock %}
+{% block title %}Montres Homme{% endblock %}
 
 {% block body %}
 <style>
@@ -20,7 +20,7 @@
 
     .section-products .single-product {
         margin-bottom: 26px;
-        box-shadow: 1px 1px 12px;
+        box-shadow: 1px 1px 12px #555;
     }
 
     .section-products .single-product .part-1 {
@@ -29,7 +29,7 @@
         max-height: 290px;
         margin-bottom: 20px;
         overflow: hidden;
-        box-shadow: 0 8px 6px -6px;
+        box-shadow: 0 8px 6px -6px black;
     }
 
     .section-products .single-product .part-1::before {
@@ -89,6 +89,7 @@
         background-color: #ffffff;
         color: black;
         text-align: center;
+        box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
         transition: color 0.2s;
     }
 
@@ -138,9 +139,7 @@
     }
 </style>
 
-
-<img src="assets/images/Header_montres_femmes.png" class="modal-fullscreen" alt="Header Montres Femmes">
-
+<img src="assets/images/Header_montres_homme.png" class="modal-fullscreen" alt="Header Montres Homme">
 
 
 <div class="container">
@@ -148,11 +147,11 @@
 
         <div class="row">
             <div class="d-flex justify-content-center mt-5 mb-4">
-                <h2 class="fs-2 fade-in" href="">MONTRES FEMMES</h2>
+                <h2 class="fs-2 fade-in" href="">MONTRES HOMME</h2>
             </div>
 
-            {% for product in products %}
 
+            {% for product in products %}
             <div class="col-md-6 col-lg-4 col-xl-3 fade-in">
                 <div id="product-1" class="single-product">
                     <div class="part-1 d-flex justify-content-center">
@@ -199,6 +198,7 @@
 
     });
 </script>
+
 
 
 

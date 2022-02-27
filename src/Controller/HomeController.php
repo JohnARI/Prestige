@@ -78,9 +78,9 @@ class HomeController extends AbstractController
     } 
 
    /**
-     * @Route("/montreshommes", name="montres_hommes")
+     * @Route("/montreshomme", name="montres_homme")
      */
-    public function montresHommes(): Response {
+    public function montresHomme(): Response {
     
        
 
@@ -90,7 +90,7 @@ class HomeController extends AbstractController
 
         
 
-        return $this->render("montres/montres_hommes.html.twig",[
+        return $this->render("montres/montres_homme.html.twig",[
             'products' => $products,
             'TotalPanier'=>$totalPanier
             
@@ -98,16 +98,16 @@ class HomeController extends AbstractController
     }   
     
     /**
-     * @Route("/montresfemmes", name="montres_femmes")
+     * @Route("/montresfemme", name="montres_femme")
      */
-    public function montresFemmes(): Response {
+    public function montresFemme(): Response {
 
         $totalPanier = $this->panierService->getTotalPanier();
     
         $products = $this->entityManager->getRepository(Product::class)->findByCategory(2);
 
         
-        return $this->render("montres/montres_femmes.html.twig",[
+        return $this->render("montres/montres_femme.html.twig",[
             'products' => $products,
             'TotalPanier'=>$totalPanier
         ]);
@@ -164,13 +164,13 @@ class HomeController extends AbstractController
         if ($route == 'home'&& $montres == "homme")
         {
             $this->addFlash('success', 'montre ajouté au panier');
-            return $this->redirectToRoute('montres_hommes');
+            return $this->redirectToRoute('montres_homme');
         }
 
         elseif ($route == 'home'&& $montres == "femme")
         {
             $this->addFlash('success', 'montre ajouté au panier');
-            return $this->redirectToRoute('montres_femmes');
+            return $this->redirectToRoute('montres_femme');
 
         }
 
